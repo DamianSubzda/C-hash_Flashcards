@@ -1,0 +1,32 @@
+﻿<Window x:Class="Projekt_fiszki.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekt_fiszki"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl HorizontalAlignment="Center">
+            <TabItem Header="Pisanie" Height="50" Width="130">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Test" Height="50" Width="130">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Nauka" Height="50" Width="130">
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
+                    <Button Content="Button" HorizontalAlignment="Center" Margin="0,139,0,0" VerticalAlignment="Top" Click="Button_Click" Height="35" Width="94"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Dopasowanie" Height="50" Width="130"/>
+            <TabItem Header="Wyścig" Height="50" Width="130">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Zapamiętane" Height="50" Width="130">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <Grid Background="#FFE5E5E5" Height="376" Width="778"/>
+        </TabControl>
+    </Grid>
+</Window>
