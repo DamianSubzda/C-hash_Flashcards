@@ -5,28 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt_fiszki"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Nauka przez fiszki" Height="450" Width="802" ResizeMode="NoResize">
     <Grid>
-        <TabControl HorizontalAlignment="Center">
-            <TabItem Header="Pisanie" Height="50" Width="130">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="Test" Height="50" Width="130">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="Nauka" Height="50" Width="130">
+        <TabControl HorizontalAlignment="Center" Width="802">
+            <TabItem Header="Pisanie" FontSize="20" Height="50" Width="133">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
-                    <Button Content="Button" HorizontalAlignment="Center" Margin="0,139,0,0" VerticalAlignment="Top" Click="Button_Click" Height="35" Width="94"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
+                    <Button Content="Zatwierdz" HorizontalAlignment="Left" Height="36" Margin="599,278,0,0" VerticalAlignment="Top" Width="112"/>
+                    <Rectangle HorizontalAlignment="Center" Height="157" Margin="0,90,0,0" Stroke="Black" VerticalAlignment="Top" Width="336"/>
+                    <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" VerticalAlignment="Top" Width="384"/>
+
+
+
+
+
                 </Grid>
             </TabItem>
-            <TabItem Header="Dopasowanie" Height="50" Width="130"/>
-            <TabItem Header="Wyścig" Height="50" Width="130">
-                <Grid Background="#FFE5E5E5"/>
+            <TabItem Header="Test" FontSize="20" Height="50" Width="133">
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
+                    <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
+                </Grid>
             </TabItem>
-            <TabItem Header="Zapamiętane" Height="50" Width="130">
-                <Grid Background="#FFE5E5E5"/>
+            <TabItem Header="Nauka" FontSize="20" Height="50" Width="133">
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
+                    <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
+                </Grid>
             </TabItem>
-            <Grid Background="#FFE5E5E5" Height="376" Width="778"/>
+            <TabItem Header="Dopasowanie" FontSize="20" Height="50" Width="133">
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
+                    <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Wyścig" FontSize="20" Height="50" Width="133">
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
+                    <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Zapamiętane" FontSize="20" Height="50" Width="133">
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
+                    <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

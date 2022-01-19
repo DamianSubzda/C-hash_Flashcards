@@ -32,7 +32,10 @@ namespace Projekt_fiszki
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             db.Connection();
-            Console.WriteLine("hello world");
+        }
+        public void test()
+        {
+            MessageBox.Show("hello world");
         }
     }
 }
