@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,11 +32,21 @@ namespace Projekt_fiszki
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            db.Connection();
+            //db.Connection();
         }
         public void test()
         {
             MessageBox.Show("hello world");
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Textbox1.Text = db.Connection();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
