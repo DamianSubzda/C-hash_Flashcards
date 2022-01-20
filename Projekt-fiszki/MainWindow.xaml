@@ -34,6 +34,8 @@
             <TabItem Header="Dopasowanie" FontSize="20" Height="50" Width="133">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
                     <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Height="26" Margin="223,105,0,0" VerticalAlignment="Top" Width="68" Click="Button_Click_1"/>
+                    <TextBox x:Name="Textbox1" HorizontalAlignment="Center" Height="51" Text="aaaaa" TextWrapping="Wrap" VerticalAlignment="Center" Width="208" TextChanged="TextBox_TextChanged" TextAlignment="Center"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Wyścig" FontSize="20" Height="50" Width="133">

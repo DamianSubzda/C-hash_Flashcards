@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,17 +26,30 @@ namespace Projekt_fiszki
         Flashcard f = new Flashcard();
         public MainWindow()
         {
-            Console.WriteLine("hello world");
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            db.Connection();
+            //db.Connection();
         }
         public void test()
         {
             MessageBox.Show("hello world");
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //Textbox1.Text = db.Connection();
+            List<String> elements;
+            elements = db.Connection(2);
+            MessageBox.Show(elements.ElementAt(4));
+            Textbox1.Text = elements.ElementAt(4);
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
