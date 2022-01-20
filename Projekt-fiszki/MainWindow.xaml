@@ -25,8 +25,11 @@
                     <TextBox x:Name="TextBox1" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" TextWrapping="Wrap" Background="Transparent" VerticalAlignment="Top" Width="384"/>
                     <Label x:Name="label1" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="70" Background="#FFF5F5F5"  Height="158" Content="..." Width="334"  Margin="0,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
                     <Label HorizontalAlignment="Left" FontSize="15" Background="Transparent"  Height="52" Content="Wpisz tłumaczenie:" Width="137"  Margin="64,293,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
-                    <Button Name="Remember_Button" HorizontalAlignment="Left" Height="50" Margin="716,65,0,0" VerticalAlignment="Top" Width="50" Click="Remember_Button_Click"/>
-                    <Button x:Name="Remember_Button_Copy" HorizontalAlignment="Left" Height="50" Margin="716,132,0,0" VerticalAlignment="Top" Width="50" Click="Show_remebered_Button_Click"/>
+                    <Button Name="Remember_Button" HorizontalAlignment="Left" Height="50" Margin="716,65,0,0" VerticalAlignment="Top" Width="50" Click="Remember_Button_Click">
+                        <StackPanel>
+                            <Image Source="brain.png" />
+                        </StackPanel>
+                    </Button>
 
 
                 </Grid>
@@ -53,7 +56,20 @@
             </TabItem>
             <TabItem Header="Zapamiętane" FontSize="20" Height="50" Width="133">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
-                    <ListBox Margin="62,82,62,48"/>
+                    <ListBox x:Name="ListBox_Remember" Margin="10,62,132,10" SelectionChanged="ListBox_SelectionChanged"/>
+                    <Button x:Name="Button_Zapamietane_Usun" Content="Usuń" HorizontalAlignment="Left" Margin="701,62,0,0" VerticalAlignment="Top" Height="180" RenderTransformOrigin="0.5,0.5" Width="85" Click="Button_Zapamietane_Usun_Click">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleX="0"/>
+                                <RotateTransform/>
+                                <TranslateTransform X="0"/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
+                    <Button x:Name="Button_Zapamietane_UsunWszystkie" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="701,242,0,0" VerticalAlignment="Top" Height="180" Width="85" Click="Button_Zapamietane_UsunWszystkie_Click">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Usuń <LineBreak/>wszystkie</TextBlock>
+                    </Button>
                 </Grid>
             </TabItem>
         </TabControl>

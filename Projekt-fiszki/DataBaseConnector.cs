@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Data;
-using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Collections.Generic;
 public class DataBaseConnector
 {
 
-    public static string token = "Data Source=DESKTOP-GH9TGES\\SQLEXPRESS;Initial Catalog=Flashcard;Integrated Security=True";
+    public static string token = "Data Source=DESKTOP-0BAKSVR\\SQLEXPRESS;Initial Catalog=Flashcard;Integrated Security=True";
     //Data Source=DESKTOP-GH9TGES\SQLEXPRESS;Initial Catalog=Flashcard;Integrated Security=True <-Mój
     //Data Source=DESKTOP-0BAKSVR\\SQLEXPRESS;Initial Catalog=Flashcard;Integrated Security=True <-Twój
 
@@ -25,7 +24,7 @@ public class DataBaseConnector
 
         elements.Add((reader.GetInt32(0)).ToString());
         int i = 1;
-        while (i<5)
+        while (i < 5)
         {
             elements.Add(reader.GetString(i));
             i++;
@@ -35,12 +34,12 @@ public class DataBaseConnector
         con.Close();
 
         return elements;
-        }
+    }
     static void HasRows(SqlConnection con)
     {
         using (con)
         {
-            SqlCommand command = new SqlCommand("SELECT ID, Polish FROM DataFlashcard;",con);
+            SqlCommand command = new SqlCommand("SELECT ID, Polish FROM DataFlashcard;", con);
             con.Open();
 
             SqlDataReader reader = command.ExecuteReader();

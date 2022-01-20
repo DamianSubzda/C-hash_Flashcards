@@ -3,23 +3,23 @@ using System.Collections.Generic;
 
 public class Remeber
 {
-	public List<String> firstWord = new List<string>();
-	public List<String> secondWord = new List<string>();
-	public Remeber()
-	{
-	}
-	public void AddWords(String one, String two)
+    public List<String> firstWord = new List<string>();
+    public List<String> secondWord = new List<string>();
+    public Remeber()
     {
-		firstWord.Add(one);
-		secondWord.Add(two);
     }
-	public List<String> getFirstWord()
+    public void AddWords(String one, String two)
     {
-		return firstWord;
+        firstWord.Add(one);
+        secondWord.Add(two);
     }
-	public List<String> getSecondWord()
-	{
-		return secondWord;
-	}
+    public List<String> getFirstWord()
+    {
+        return firstWord;
+    }
+    public List<String> getSecondWord()
+    {
+        return secondWord;
+    }
 
 }

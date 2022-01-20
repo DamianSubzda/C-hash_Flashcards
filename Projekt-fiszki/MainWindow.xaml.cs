@@ -38,7 +38,7 @@ namespace Projekt_fiszki
         }
         private void Button_Click_Check(object sender, RoutedEventArgs e)
         {
-            if(TextBox1.Text != f.elements.ElementAt(secondLanguage))
+            if (TextBox1.Text != f.elements.ElementAt(secondLanguage))
                 label1.Background = Brushes.Red;
             else
                 label1.Background = Brushes.LightGreen;
@@ -93,21 +93,81 @@ namespace Projekt_fiszki
         private void Remember_Button_Click(object sender, RoutedEventArgs e)
         {
             remeber.AddWords(f.elements.ElementAt(firstLanguage), f.elements.ElementAt(secondLanguage));
+
+            String temp = "";
+            switch (firstLanguage)
+            {
+                case 1:
+                    temp = "Polski: \t";
+                    break;
+                case 2:
+                    temp = "Angielski: \t";
+                    break;
+                case 3:
+                    temp = "Francuski: \t";
+                    break;
+                case 4:
+                    temp = "Włoski: \t";
+                    break;
+            }
+
+            temp += f.elements.ElementAt(firstLanguage);
+
+            switch (secondLanguage)
+            {
+                case 1:
+                    temp += "\t Polski: \t";
+                    break;
+                case 2:
+                    temp += "\t Angielski: \t";
+                    break;
+                case 3:
+                    temp += "\t Francuski: \t";
+                    break;
+                case 4:
+                    temp += "\t Włoski: \t";
+                    break;
+            }
+
+            temp += f.elements.ElementAt(secondLanguage);
+            ListBox_Remember.Items.Add(temp);
         }
+
+        //List<String> one = remeber.getFirstWord();
+        //List<String> two = remeber.getSecondWord();
+
 
         private void Show_remebered_Button_Click(object sender, RoutedEventArgs e)
         {
-            List<String> one = remeber.getFirstWord();
-            List<String> two = remeber.getSecondWord();
-            MessageBox.Show(one.Last());
-            MessageBox.Show(two.Last());
+            
+            
+            //MessageBox.Show(one.Last());
+            //MessageBox.Show(two.Last());
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Zapamietane_UsunWszystkie_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (string s in ListBox_Remember.Items.OfType<string>().ToList())
+                ListBox_Remember.Items.Remove(s);
+        }
+
+
+        private void Button_Zapamietane_Usun_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (string s in ListBox_Remember.SelectedItems.OfType<string>().ToList())
+                ListBox_Remember.Items.Remove(s);
         }
     }
 }
 
 //TODO 
 /*  Duze i male litery nie mają znaczenia!
- *  
+ *  zrobic w zapamietaniu bez powtorzen
  * 
  * 
  * */
