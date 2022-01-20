@@ -5,47 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt_fiszki"
         mc:Ignorable="d"
-        Title="Nauka przez fiszki" Height="450" Width="802" ResizeMode="NoResize">
+        Title="Nauka przez fiszki" Height="450" Width="802" ResizeMode="NoResize" Background="#FFE5E5E5">
     <Grid>
         <TabControl HorizontalAlignment="Center" Width="802">
             <TabItem Header="Pisanie" FontSize="20" Height="50" Width="133">
-                <Grid Background="#FFE5E5E5" Cursor="Hand" HorizontalAlignment="Center" Width="800">
-                    <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
-                    <Button Content="Zatwierdz" Name="zatwierdz" HorizontalAlignment="Left" Height="36" Margin="599,278,0,0" VerticalAlignment="Top" Width="112" Click="Button_Click_2"/>
-                    <Rectangle HorizontalAlignment="Center" Height="157" Margin="0,90,0,0" Stroke="Black" VerticalAlignment="Top" Width="336"/>
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
+                    <ComboBox Name="cb1" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb1_DropDownClosed">
+                        <ComboBoxItem IsSelected="True">Polski - Angielski</ComboBoxItem>
+                        <ComboBoxItem>Polski - Francuski</ComboBoxItem>
+                        <ComboBoxItem>Polski - Włoski</ComboBoxItem>
+                        <ComboBoxItem>Angielski - Polski</ComboBoxItem>
+                        <ComboBoxItem>Francuski - Polski</ComboBoxItem>
+                        <ComboBoxItem>Włoski - Polski</ComboBoxItem>
+                    </ComboBox>
+                    <Button Content="Sprawdź!" Name="zatwierdz" HorizontalAlignment="Left" Height="36" Margin="619,260,0,0" VerticalAlignment="Top" Width="112" Click="Button_Click_Check"/>
+                    <Button Content="Następna" x:Name="next" HorizontalAlignment="Left" Height="36" Margin="619,309,0,0" VerticalAlignment="Top" Width="112" Click="Button_Click_Next"/>
+                    <Rectangle HorizontalAlignment="Center" Height="160" Margin="0,90,0,0" Stroke="Black" VerticalAlignment="Top" Width="336"/>
                     <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" VerticalAlignment="Top" Width="384"/>
-                    <TextBox x:Name="Textbox1" FontSize="70" Background="Transparent" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Height="160" Text="..." TextWrapping="Wrap" Width="336" TextChanged="TextBox_TextChanged" TextAlignment="Center" Margin="0,90,0,129" VerticalAlignment="Bottom"/>
-
-
+                    <TextBox x:Name="TextBox1" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" TextWrapping="Wrap" Background="Transparent" VerticalAlignment="Top" Width="384"/>
+                    <Label x:Name="label1" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="70" Background="#FFF5F5F5"  Height="158" Content="..." Width="334"  Margin="0,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+                    <Label HorizontalAlignment="Left" FontSize="15" Background="Transparent"  Height="52" Content="Wpisz tłumaczenie:" Width="137"  Margin="64,293,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+                    <Button Name="Remember_Button" HorizontalAlignment="Left" Height="50" Margin="716,65,0,0" VerticalAlignment="Top" Width="50" Click="Remember_Button_Click"/>
+                    <Button x:Name="Remember_Button_Copy" HorizontalAlignment="Left" Height="50" Margin="716,132,0,0" VerticalAlignment="Top" Width="50" Click="Show_remebered_Button_Click"/>
 
 
                 </Grid>
             </TabItem>
             <TabItem Header="Test" FontSize="20" Height="50" Width="133">
-                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
-                    <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
+                    <ComboBox HorizontalAlignment="Left" Margin="636,90,0,314" Width="150" Height="28"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Nauka" FontSize="20" Height="50" Width="133">
-                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
-                    <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
+                    <ComboBox HorizontalAlignment="Left" Margin="636,90,0,314" Width="150" Height="28"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Dopasowanie" FontSize="20" Height="50" Width="133">
-                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
-                    <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
-                    <Button Content="Button" HorizontalAlignment="Left" Height="26" Margin="223,105,0,0" VerticalAlignment="Top" Width="68" Click="Button_Click_1"/>
-                    <TextBox x:Name="Textbox1" HorizontalAlignment="Left" Height="78" Margin="366,160,0,0" Text="aaaaa" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="TextBox_TextChanged"/>
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
+                    <ComboBox HorizontalAlignment="Left" Margin="636,90,0,314" Width="150" Height="28"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Wyścig" FontSize="20" Height="50" Width="133">
-                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
-                    <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
+                    <ComboBox HorizontalAlignment="Left" Margin="636,90,0,314" Width="150" Height="28"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Zapamiętane" FontSize="20" Height="50" Width="133">
-                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
-                    <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
+                    <ListBox Margin="62,82,62,48"/>
                 </Grid>
             </TabItem>
         </TabControl>
