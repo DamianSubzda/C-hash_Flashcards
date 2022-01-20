@@ -27,16 +27,20 @@ namespace Projekt_fiszki
             InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             //MessageBox.Show(f.elements.ElementAt(4));
             Flashcard f = new Flashcard(1);
             Textbox1.Text = f.elements.ElementAt(1); //NUmerowane od 0 ale 0 to ID
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
