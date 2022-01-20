@@ -9,12 +9,12 @@
     <Grid>
         <TabControl HorizontalAlignment="Center" Width="802">
             <TabItem Header="Pisanie" FontSize="20" Height="50" Width="133">
-                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
+                <Grid Background="#FFE5E5E5" Cursor="Hand" HorizontalAlignment="Center" Width="800">
                     <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
-                    <Button Content="Zatwierdz" HorizontalAlignment="Left" Height="36" Margin="599,278,0,0" VerticalAlignment="Top" Width="112"/>
+                    <Button Content="Zatwierdz" Name="zatwierdz" HorizontalAlignment="Left" Height="36" Margin="599,278,0,0" VerticalAlignment="Top" Width="112" Click="Button_Click_2"/>
                     <Rectangle HorizontalAlignment="Center" Height="157" Margin="0,90,0,0" Stroke="Black" VerticalAlignment="Top" Width="336"/>
                     <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" VerticalAlignment="Top" Width="384"/>
-
+                    <TextBox x:Name="Textbox1" FontSize="70" Background="Transparent" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Height="160" Text="..." TextWrapping="Wrap" Width="336" TextChanged="TextBox_TextChanged" TextAlignment="Center" Margin="0,90,0,129" VerticalAlignment="Bottom"/>
 
 
 
@@ -34,8 +34,6 @@
             <TabItem Header="Dopasowanie" FontSize="20" Height="50" Width="133">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497">
                     <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
-                    <Button Content="Button" HorizontalAlignment="Left" Height="26" Margin="223,105,0,0" VerticalAlignment="Top" Width="68" Click="Button_Click_1"/>
-                    <TextBox x:Name="Textbox1" HorizontalAlignment="Center" Height="51" Text="aaaaa" TextWrapping="Wrap" VerticalAlignment="Center" Width="208" TextChanged="TextBox_TextChanged" TextAlignment="Center"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Wyścig" FontSize="20" Height="50" Width="133">

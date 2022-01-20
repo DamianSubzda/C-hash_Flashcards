@@ -22,34 +22,21 @@ namespace Projekt_fiszki
     /// </summary>
     public partial class MainWindow : Window
     {
-        DataBaseConnector db = new DataBaseConnector();
-        Flashcard f = new Flashcard();
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //db.Connection();
-        }
-        public void test()
-        {
-            MessageBox.Show("hello world");
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            //Textbox1.Text = db.Connection();
-            List<String> elements;
-            elements = db.Connection(2);
-            MessageBox.Show(elements.ElementAt(4));
-            Textbox1.Text = elements.ElementAt(4);
-        }
-
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show(f.elements.ElementAt(4));
+            Flashcard f = new Flashcard(1);
+            Textbox1.Text = f.elements.ElementAt(1); //NUmerowane od 0 ale 0 to ID
         }
     }
 }
