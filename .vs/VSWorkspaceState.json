@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Projekt-fiszki"
   ],
-  "SelectedNode": "\\Projekt-fiszki.sln",
+  "SelectedNode": "\\Projekt-fiszki\\DataBaseConnector.cs",
   "PreviewInSolutionExplorer": false
 }

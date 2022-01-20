@@ -1,81 +1,45 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Data;
-using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+
 
 public class DataBaseConnector
 {
 
     public static string token = "Data Source=DESKTOP-0BAKSVR\\SQLEXPRESS;Initial Catalog=Flashcard;Integrated Security=True";
-    public DataBaseConnector()
-	{
-	}
+    //Data Source=DESKTOP-GH9TGES\SQLEXPRESS;Initial Catalog=Flashcard;Integrated Security=True <-Mój
+    //Data Source=DESKTOP-0BAKSVR\\SQLEXPRESS;Initial Catalog=Flashcard;Integrated Security=True <-Twój
 
-    public string Connection()
+    public List<String> Connection(int ID)
+    {
+        List<String> elements = new List<String>();
+        SqlConnection con = new SqlConnection(token);
+        SqlCommand command = new SqlCommand($"select * from DataFlashcard where ID = {ID};", con);
+        con.Open();
+        SqlDataReader reader = command.ExecuteReader();
+        reader.Read();
+
+        elements.Add((reader.GetInt32(0)).ToString());
+        int i = 1;
+        while (i < 5)
         {
-        Console.WriteLine("asdasd");
-        String a = "a";
-            SqlConnection con = new SqlConnection(token);
-            SqlCommand command = new SqlCommand(
-                  "SELECT ID, Polish FROM DataFlashcard;",
-                  con);
-            con.Open();
-            SqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                a= "{0}\t{1}" + (reader.GetInt32(0)).ToString() + "  " +
-                        reader.GetString(1);
-            }
+            elements.Add(reader.GetString(i));
+            i++;
+        }
+
         reader.Close();
         con.Close();
-        return a;
-        }
 
-/*        public async Task<string> Connection2Async(int id)
-    {
-        Console.WriteLine("asdasd");
-        String a = "a";
-        String b = "b";
-        String c = "c";
-
-        using (SqlConnection conn = new SqlConnection(token))
-        {
-            conn.Open();
-
-            string sql = @" SELECT ID, Polish FROM Images where id = @id";
-
-            using (SqlCommand comm = new SqlCommand(sql, conn))
-            {
-                comm.Parameters.AddWithValue("@id", id);
-
-                using (var reader = await comm.ExecuteReaderAsync())
-                {
-                    if (!reader.Read())
-                        throw new Exception("Something is very wrong");
-
-                    String ordId = (reader.GetOrdinal("ID")).ToString();
-                    String ordPolish = (reader.GetOrdinal("Polish")).ToString();
-
-                    a = reader.GetString(ordId);
-                    b = reader.GetString(ordPolish);
-                    c = a + " " + b;
-                    
-                }
-            }
-            conn.Close();
-            return c;
-        }
-    }*/
-
+        return elements;
+    }
     static void HasRows(SqlConnection con)
     {
         using (con)
         {
-            SqlCommand command = new SqlCommand(
-              "SELECT ID, Polish FROM DataFlashcard;",
-              con);
+            SqlCommand command = new SqlCommand("SELECT ID, Polish FROM DataFlashcard;", con);
             con.Open();
 
             SqlDataReader reader = command.ExecuteReader();
@@ -95,32 +59,31 @@ public class DataBaseConnector
             reader.Close();
         }
     }
+    public int NumberOfRows()
+    {
+        SqlConnection con = new SqlConnection(token);
+        int n = 0;
+        using (con)
+        {
 
-    /*    public static void MyFunction(string Id, string Name)
-        {
-            Console.Write(Name);
-        }
-        public void GetRow()
-        {
-            SqlConnection conn = new SqlConnection(token);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM TABLE", conn);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            foreach (DataRow dr in dt.Rows)
+            SqlCommand command = new SqlCommand("SELECT * FROM DataFlashcard;", con);
+            con.Open();
+
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
             {
-                MyFunction(dr["Id"].ToString(), dr["Name"].ToString());
+                while (reader.Read())
+                {
+                    n += 1;
+                }
             }
-
-
-
-            Console.Read();
-
-        }*/
-
-    public void GetRecordFromDB()
-	{
-
-	}
+            else
+            {
+                n = 0;
+            }
+            reader.Close();
+        }
+        return n;
+    }
 
 }
