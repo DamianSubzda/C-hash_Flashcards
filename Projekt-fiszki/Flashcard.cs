@@ -14,7 +14,7 @@ public class Flashcard
 
     private List<String> getElements(int ID)
     {
-        elements = db.Connection(ID);
+        elements = db.getRecord(ID);
         return elements;
     }
 

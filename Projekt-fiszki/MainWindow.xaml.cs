@@ -21,14 +21,13 @@ namespace Projekt_fiszki
     {
 
         public static DataBaseConnector db = new DataBaseConnector();
-        public Remeber remeber = new Remeber();
+        public Remeber remember = new Remeber();
         private Flashcard f = new Flashcard(randFlashcard());
         private int firstLanguage = 1;
         private int secondLanguage = 2;
         public MainWindow()
         {
             InitializeComponent();
-            AddFlashCard();
         }
 
         private void Button_Click_Next(object sender, RoutedEventArgs e)
@@ -92,50 +91,20 @@ namespace Projekt_fiszki
 
         private void Remember_Button_Click(object sender, RoutedEventArgs e)
         {
-            remeber.AddWords(f.elements.ElementAt(firstLanguage), f.elements.ElementAt(secondLanguage));
+            String temp = null;
+            temp = remember.parseString(firstLanguage, secondLanguage, f.elements.ElementAt(firstLanguage), f.elements.ElementAt(secondLanguage));
 
-            String temp = "";
-            switch (firstLanguage)
+            Boolean x = remember.checkList(temp);
+            if (x)
             {
-                case 1:
-                    temp = "Polski: \t";
-                    break;
-                case 2:
-                    temp = "Angielski: \t";
-                    break;
-                case 3:
-                    temp = "Francuski: \t";
-                    break;
-                case 4:
-                    temp = "Włoski: \t";
-                    break;
+                ListBox_Remember.Items.Add(temp);
             }
-
-            temp += f.elements.ElementAt(firstLanguage);
-
-            switch (secondLanguage)
-            {
-                case 1:
-                    temp += "\t Polski: \t";
-                    break;
-                case 2:
-                    temp += "\t Angielski: \t";
-                    break;
-                case 3:
-                    temp += "\t Francuski: \t";
-                    break;
-                case 4:
-                    temp += "\t Włoski: \t";
-                    break;
-            }
-
-            temp += f.elements.ElementAt(secondLanguage);
-            ListBox_Remember.Items.Add(temp);
+            
+            
         }
 
         //List<String> one = remeber.getFirstWord();
         //List<String> two = remeber.getSecondWord();
-
 
         private void Show_remebered_Button_Click(object sender, RoutedEventArgs e)
         {
