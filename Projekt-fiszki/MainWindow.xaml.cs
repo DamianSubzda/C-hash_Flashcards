@@ -45,7 +45,6 @@ namespace Projekt_fiszki
         }
         private void AddFlashCard()
         {
-
             f = new Flashcard(randFlashcard());
             label1.Content = f.elements.ElementAt(firstLanguage); //Numerowane od 0 ale 0 to ID
             TextBox1.Text = "";
@@ -103,22 +102,6 @@ namespace Projekt_fiszki
             
         }
 
-        //List<String> one = remeber.getFirstWord();
-        //List<String> two = remeber.getSecondWord();
-
-        private void Show_remebered_Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-            
-            //MessageBox.Show(one.Last());
-            //MessageBox.Show(two.Last());
-        }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void Button_Zapamietane_UsunWszystkie_Click(object sender, RoutedEventArgs e)
         {
             foreach (string s in ListBox_Remember.Items.OfType<string>().ToList())
@@ -129,7 +112,6 @@ namespace Projekt_fiszki
                 
         }
 
-
         private void Button_Zapamietane_Usun_Click(object sender, RoutedEventArgs e)
         {
             foreach (string s in ListBox_Remember.SelectedItems.OfType<string>().ToList())
@@ -138,6 +120,18 @@ namespace Projekt_fiszki
                 ListBox_Remember.Items.Remove(s);
             }
                 
+        }
+
+        private void Button_Click_New_Flashcard(object sender, RoutedEventArgs e)
+        {
+            AddFlashCard1();
+            //MessageBox.Show("hi");
+        }
+        private void AddFlashCard1()
+        {
+            f = new Flashcard(randFlashcard());
+            label2.Content = f.elements.ElementAt(firstLanguage); //Numerowane od 0 ale 0 to ID
+
         }
     }
 }

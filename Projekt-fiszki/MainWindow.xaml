@@ -36,12 +36,30 @@
             </TabItem>
             <TabItem Header="Test" FontSize="20" Height="50" Width="133">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
-                    <ComboBox HorizontalAlignment="Left" Margin="636,90,0,314" Width="150" Height="28"/>
+
                 </Grid>
             </TabItem>
             <TabItem Header="Nauka" FontSize="20" Height="50" Width="133">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
-                    <ComboBox HorizontalAlignment="Left" Margin="636,90,0,314" Width="150" Height="28"/>
+
+                    <ComboBox Name="cb2" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb1_DropDownClosed">
+                        <ComboBoxItem IsSelected="True">Polski - Angielski</ComboBoxItem>
+                        <ComboBoxItem>Polski - Francuski</ComboBoxItem>
+                        <ComboBoxItem>Polski - Włoski</ComboBoxItem>
+                        <ComboBoxItem>Angielski - Polski</ComboBoxItem>
+                        <ComboBoxItem>Francuski - Polski</ComboBoxItem>
+                        <ComboBoxItem>Włoski - Polski</ComboBoxItem>
+                    </ComboBox>
+                    <Rectangle HorizontalAlignment="Center" Height="160" Margin="0,90,0,0" Stroke="Black" VerticalAlignment="Top" Width="336"/>
+
+                    <Label Name="label2" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="70" Background="#FFF5F5F5"  Height="158" Content="..." Width="334"  Margin="0,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+                    <Button Name ="NewFlashCard_button" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="70" Background="#FFF5F5F5"  Height="158" Content="..." Width="334"  Margin="0,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Click="Button_Click_New_Flashcard"/>
+                    <Button HorizontalAlignment="Left" Height="50" Margin="716,65,0,0" VerticalAlignment="Top" Width="50" Click="Remember_Button_Click">
+                        <StackPanel>
+                            <Image Source="brain.png" />
+                        </StackPanel>
+                    </Button>
+
                 </Grid>
             </TabItem>
             <TabItem Header="Dopasowanie" FontSize="20" Height="50" Width="133">
