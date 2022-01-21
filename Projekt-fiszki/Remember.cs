@@ -16,16 +16,6 @@ public class Remeber
     {
         rememberElement.Remove(temp);
     }
-    /*
-    public List<String> getFirstWord()
-    {
-        return firstWord;
-    }
-    public List<String> getSecondWord()
-    {
-        return secondWord;
-    }
-    */
     public String parseString(int firstLanguage, int secondLanguage, String firstWord, String secondWord)
     {
         String temp = "";
@@ -64,7 +54,7 @@ public class Remeber
         }
 
         temp += secondWord;
-        
+
         return temp;
     }
     public Boolean checkList(String temp)
@@ -76,11 +66,11 @@ public class Remeber
         }
         AddWord(temp);
         return true;
-    /*    for (int i = 0; i < rememberElement.Count; i++)
+        for (int i = 0; i < rememberElement.Count; i++)
         {
-            if(temp == rememberElement[i])
-                        return false;
-        }*/
-        
+            if (temp == rememberElement[i])
+                return false;
+        }
+
     }
 }

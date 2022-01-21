@@ -22,7 +22,7 @@ namespace Projekt_fiszki
 
         public static DataBaseConnector db = new DataBaseConnector();
         public Remeber remember = new Remeber();
-        private Flashcard f = new Flashcard(randFlashcard());
+        private Flashcard f = null;
         private int firstLanguage = 1;
         private int secondLanguage = 2;
         public MainWindow()
@@ -33,7 +33,7 @@ namespace Projekt_fiszki
         private void Button_Click_Next(object sender, RoutedEventArgs e)
         {
             f = null;
-            AddFlashCard();
+            AddFlashCardWrite();
         }
         private void Button_Click_Check(object sender, RoutedEventArgs e)
         {
@@ -43,12 +43,21 @@ namespace Projekt_fiszki
                 label1.Background = Brushes.LightGreen;
             TextBox1.Text = "";
         }
-        private void AddFlashCard()
+        private void AddFlashCardWrite()
         {
+
             f = new Flashcard(randFlashcard());
             label1.Content = f.elements.ElementAt(firstLanguage); //Numerowane od 0 ale 0 to ID
             TextBox1.Text = "";
             label1.Background = Brushes.WhiteSmoke;
+        }
+
+        private void AddFlashCardTeach()
+        {
+
+            f = new Flashcard(randFlashcard());
+            NewFlashCard_button.Content = f.elements.ElementAt(firstLanguage); //Numerowane od 0 ale 0 to ID
+            NewFlashCard_button.Background = Brushes.IndianRed;
         }
         private static int randFlashcard()
         {
@@ -85,21 +94,61 @@ namespace Projekt_fiszki
                     secondLanguage = 1;
                     break;
             }
-            AddFlashCard();
+            AddFlashCardWrite();
         }
 
+        private void cb2_DropDownClosed(object sender, EventArgs e)
+        {
+            switch (cb2.Text)
+            {
+                case "Polski - Angielski":
+                    firstLanguage = 1;
+                    secondLanguage = 2;
+                    break;
+                case "Polski - Francuski":
+                    firstLanguage = 1;
+                    secondLanguage = 3;
+                    break;
+                case "Polski - Włoski":
+                    firstLanguage = 1;
+                    secondLanguage = 4;
+                    break;
+                case "Angielski - Polski":
+                    firstLanguage = 2;
+                    secondLanguage = 1;
+                    break;
+                case "Francuski - Polski":
+                    firstLanguage = 3;
+                    secondLanguage = 1;
+                    break;
+                case "Włoski - Polski":
+                    firstLanguage = 4;
+                    secondLanguage = 1;
+                    break;
+            }
+            AddFlashCardTeach();
+        }
         private void Remember_Button_Click(object sender, RoutedEventArgs e)
         {
-            String temp = null;
-            temp = remember.parseString(firstLanguage, secondLanguage, f.elements.ElementAt(firstLanguage), f.elements.ElementAt(secondLanguage));
-
-            Boolean x = remember.checkList(temp);
-            if (x == true)
+            if (f != null)
             {
-                ListBox_Remember.Items.Add(temp);
+                String temp = null;
+                temp = remember.parseString(firstLanguage, secondLanguage, f.elements.ElementAt(firstLanguage), f.elements.ElementAt(secondLanguage));
+
+                Boolean x = remember.checkList(temp);
+                if (x == true)
+                {
+                    ListBox_Remember.Items.Add(temp);
+                }
             }
-            
-            
+        }
+
+        private void Show_remebered_Button_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
         }
 
         private void Button_Zapamietane_UsunWszystkie_Click(object sender, RoutedEventArgs e)
@@ -109,7 +158,7 @@ namespace Projekt_fiszki
                 remember.DeleteWord(s);
                 ListBox_Remember.Items.Remove(s);
             }
-                
+
         }
 
         private void Button_Zapamietane_Usun_Click(object sender, RoutedEventArgs e)
@@ -119,18 +168,45 @@ namespace Projekt_fiszki
                 remember.DeleteWord(s);
                 ListBox_Remember.Items.Remove(s);
             }
-                
+
         }
 
         private void Button_Click_New_Flashcard(object sender, RoutedEventArgs e)
         {
-            AddFlashCard1();
-            //MessageBox.Show("hi");
+            AddFlashCardTeach();
+            NewFlashCard_button.Background = Brushes.IndianRed;
         }
-        private void AddFlashCard1()
+
+        private void NewFlashCard_button_MouseEnter(object sender, MouseEventArgs e)
         {
-            f = new Flashcard(randFlashcard());
-            label2.Content = f.elements.ElementAt(firstLanguage); //Numerowane od 0 ale 0 to ID
+            if (f != null)
+            {
+                NewFlashCard_button.Content = f.elements.ElementAt(secondLanguage);
+                NewFlashCard_button.Background = Brushes.IndianRed;
+            }
+
+            else
+                NewFlashCard_button.Content = "...";
+        }
+
+        private void NewFlashCard_button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (f != null)
+            {
+                NewFlashCard_button.Content = f.elements.ElementAt(firstLanguage);
+                NewFlashCard_button.Background = Brushes.BlueViolet;
+            }
+
+
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        {
 
         }
     }
