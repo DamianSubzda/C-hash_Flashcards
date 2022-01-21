@@ -20,7 +20,7 @@ namespace Projekt_fiszki
 
         public void setFlashCards()
         {
-            for (int i = 0; i < numberOfQuestions; i++)
+            for (int i = 0; i < numberOfQuestions+1; i++)
             {
                 Flashcard f = new Flashcard(randFlashcard());
                 testFlashCards.Add(f);
