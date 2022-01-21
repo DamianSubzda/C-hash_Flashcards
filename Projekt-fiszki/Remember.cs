@@ -11,6 +11,11 @@ public class Remeber
     {
         rememberElement.Add(temp);
     }
+
+    public void DeleteWord(String temp)
+    {
+        rememberElement.Remove(temp);
+    }
     /*
     public List<String> getFirstWord()
     {
@@ -45,16 +50,16 @@ public class Remeber
         switch (secondLanguage)
         {
             case 1:
-                temp += "\t\t Polski: \t";
+                temp += "\t Polski: \t";
                 break;
             case 2:
-                temp += "\t\t Angielski: \t";
+                temp += "\t Angielski: \t";
                 break;
             case 3:
-                temp += "\t\t Francuski: \t";
+                temp += "\t Francuski: \t";
                 break;
             case 4:
-                temp += "\t\t Włoski: \t";
+                temp += "\t Włoski: \t";
                 break;
         }
 
@@ -64,14 +69,18 @@ public class Remeber
     }
     public Boolean checkList(String temp)
     {
-        //if(jest w liście to){
-        //    return false;
-        //}
-        //else
-        //{
-        //    AddWord(temp);
-        //    return true;
-        //}
-        return false; //albo true
+        foreach (String a in rememberElement)
+        {
+            if (temp == a)
+                return false;
+        }
+        AddWord(temp);
+        return true;
+    /*    for (int i = 0; i < rememberElement.Count; i++)
+        {
+            if(temp == rememberElement[i])
+                        return false;
+        }*/
+        
     }
 }

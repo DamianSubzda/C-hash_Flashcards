@@ -95,7 +95,7 @@ namespace Projekt_fiszki
             temp = remember.parseString(firstLanguage, secondLanguage, f.elements.ElementAt(firstLanguage), f.elements.ElementAt(secondLanguage));
 
             Boolean x = remember.checkList(temp);
-            if (x)
+            if (x == true)
             {
                 ListBox_Remember.Items.Add(temp);
             }
@@ -122,14 +122,22 @@ namespace Projekt_fiszki
         private void Button_Zapamietane_UsunWszystkie_Click(object sender, RoutedEventArgs e)
         {
             foreach (string s in ListBox_Remember.Items.OfType<string>().ToList())
+            {
+                remember.DeleteWord(s);
                 ListBox_Remember.Items.Remove(s);
+            }
+                
         }
 
 
         private void Button_Zapamietane_Usun_Click(object sender, RoutedEventArgs e)
         {
             foreach (string s in ListBox_Remember.SelectedItems.OfType<string>().ToList())
+            {
+                remember.DeleteWord(s);
                 ListBox_Remember.Items.Remove(s);
+            }
+                
         }
     }
 }
