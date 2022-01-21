@@ -45,8 +45,8 @@
                     <RadioButton Name ="rb3" Content="10" HorizontalAlignment="Left" Margin="511,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="44" RenderTransformOrigin="0.182,0.035" Checked="RadioButton_Checked_3"/>
                     <Button Name="start_test" Content="Rozpocznij test" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,308,0,0" Click="Button_Click_Start_Test"/>
                     <Label Name="label3" Content="Wybierz liczbę pytań:" FontSize ="35" HorizontalAlignment="Center" Visibility="Visible" Margin="0,129,0,0" VerticalAlignment="Top"/>
-                    <Label Name="label4" Content="0/0" HorizontalAlignment="Left" Margin="607,94,0,0" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
-                    <ComboBox x:Name="cb3" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb1_DropDownClosed">
+                    <Label Name="label4" Content="0/0" HorizontalAlignment="Left" Margin="607,94,0,0" VerticalAlignment="Top" Width="160" Visibility="Hidden"/>
+                    <ComboBox x:Name="cb3" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb3_DropDownClosed">
                         <ComboBoxItem IsSelected="True" Content="Polski - Angielski"/>
                         <ComboBoxItem Content="Polski - Francuski"/>
                         <ComboBoxItem Content="Polski - Włoski"/>
@@ -54,8 +54,11 @@
                         <ComboBoxItem Content="Francuski - Polski"/>
                         <ComboBoxItem Content="Włoski - Polski"/>
                     </ComboBox>
-                    <Button Name="nextTest" Content="Następny" HorizontalAlignment="Left" Margin="625,270,0,0" VerticalAlignment="Top" Height="53" Width="104" Visibility="Hidden"/>
+                    <Button Name="nextTest" Content="Następny" HorizontalAlignment="Left" Margin="625,270,0,0" VerticalAlignment="Top" Height="53" Width="104" Visibility="Hidden" Click="nextTest_Click"/>
+                    <Button Name="endTest" Content="Zakończ" HorizontalAlignment="Left" Margin="625,270,0,0" VerticalAlignment="Top" Height="53" Width="104" Visibility="Hidden" Click="endTest_Click"/>
                     <Label Name="label5" HorizontalAlignment="Left" FontSize="15" Background="Transparent"  Height="52" Content="Wpisz odpowiedz:" Width="137"  Margin="69,287,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" />
+                    <Label x:Name="label6" FontSize="40" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="90" Margin="0,170,0,0" VerticalAlignment="Top" Width="596" Visibility="Hidden"/>
+                    <Button x:Name="newTest_button" Content="Rozpocznij nowy test" HorizontalAlignment="Center" Height="78" Margin="0,284,0,0" VerticalAlignment="Top" Width="445" Click="newTest_button_Click" Visibility="Hidden"/>
 
                 </Grid>
             </TabItem>

@@ -129,6 +129,37 @@ namespace Projekt_fiszki
             }
             AddFlashCardTeach();
         }
+
+        private void cb3_DropDownClosed(object sender, EventArgs e)
+        {
+            switch (cb3.Text)
+            {
+                case "Polski - Angielski":
+                    firstLanguage = 1;
+                    secondLanguage = 2;
+                    break;
+                case "Polski - Francuski":
+                    firstLanguage = 1;
+                    secondLanguage = 3;
+                    break;
+                case "Polski - Włoski":
+                    firstLanguage = 1;
+                    secondLanguage = 4;
+                    break;
+                case "Angielski - Polski":
+                    firstLanguage = 2;
+                    secondLanguage = 1;
+                    break;
+                case "Francuski - Polski":
+                    firstLanguage = 3;
+                    secondLanguage = 1;
+                    break;
+                case "Włoski - Polski":
+                    firstLanguage = 4;
+                    secondLanguage = 1;
+                    break;
+            }
+        }
         private void Remember_Button_Click(object sender, RoutedEventArgs e)
         {
             if(f != null)
@@ -201,6 +232,8 @@ namespace Projekt_fiszki
             
         }
 
+       
+
         private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
             numberOfQuestions = 3;
@@ -216,6 +249,10 @@ namespace Projekt_fiszki
             numberOfQuestions = 10;
         }
 
+        int nr_label;
+        Test test;
+        int score_test;
+        Flashcard t;
         private void Button_Click_Start_Test(object sender, RoutedEventArgs e)
         {
             rb1.Visibility = Visibility.Hidden;
@@ -233,19 +270,74 @@ namespace Projekt_fiszki
             nextTest.Visibility = Visibility.Visible;
             label5.Visibility = Visibility.Visible;
 
-            label4.Content = $"Progres: 1/{numberOfQuestions}";
-
-            Test test = new Test(numberOfQuestions);
-            Flashcard t = test.getFlashcard(0);
+            score_test = 0;
+            nr_label = 1;
+            label4.Content = $"Progres: {nr_label}/{numberOfQuestions}";
+            test = new Test(numberOfQuestions);
+            t = test.getFlashcard(0);
             label2.Content = t.elements.ElementAt(firstLanguage);
+            nr_label = 2;
 
         }
+
+        private void nextTest_Click(object sender, RoutedEventArgs e)
+        {
+            if (TextBox2.Text == t.elements.ElementAt(secondLanguage))
+                score_test++;
+            TextBox2.Text = "";
+            t = test.getFlashcard(nr_label-1);
+            label4.Content = $"Progres: {nr_label}/{numberOfQuestions}";
+            label2.Content = t.elements.ElementAt(firstLanguage);
+            nr_label++;
+            
+            if (nr_label == numberOfQuestions + 1)
+            {
+                nextTest.Visibility = Visibility.Hidden;
+                endTest.Visibility = Visibility.Visible;
+            }
+
+        }
+
+        private void endTest_Click(object sender, RoutedEventArgs e)
+        {
+            if (TextBox2.Text == t.elements.ElementAt(secondLanguage))
+                score_test++;
+            t = null;
+            TextBox2.Text = "";
+            endTest.Visibility = Visibility.Hidden;
+            TextBox2.Visibility = Visibility.Hidden;
+            rec.Visibility = Visibility.Hidden;
+            border.Visibility = Visibility.Hidden;
+            label2.Visibility = Visibility.Hidden;
+            label4.Visibility = Visibility.Hidden;
+            nextTest.Visibility = Visibility.Hidden;
+            label5.Visibility = Visibility.Hidden;
+            label6.Visibility = Visibility.Visible;
+            newTest_button.Visibility = Visibility.Visible;
+            label6.Content = $"Twój wynik to {score_test}/{numberOfQuestions}.";
+        }
+
+        private void newTest_button_Click(object sender, RoutedEventArgs e)
+        {
+            test = null;
+            label6.Visibility = Visibility.Hidden;
+            newTest_button.Visibility = Visibility.Hidden;
+            rb1.Visibility = Visibility.Visible;
+            rb2.Visibility = Visibility.Visible;
+            rb3.Visibility = Visibility.Visible;
+            label3.Visibility = Visibility.Visible;
+            start_test.Visibility = Visibility.Visible;
+            cb3.Visibility = Visibility.Visible;
+
+        }
+
+       
     }
 }
 
 //TODO 
 /*  Duze i male litery nie mają znaczenia!
- *  zrobic w zapamietaniu bez powtorzen
+ * 
  * 
  * 
  * */
