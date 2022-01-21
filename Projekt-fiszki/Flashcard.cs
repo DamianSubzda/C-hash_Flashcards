@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class Flashcard
+namespace Projekt_fiszki
 {
-    public int ID;
-    public List<String> elements;
-    private DataBaseConnector db = new DataBaseConnector();
-    public Flashcard(int ID)
+    public class Flashcard
     {
-        this.ID = ID;
-        elements = getElements(ID);
-    }
+        public int ID;
+        public List<String> elements;
+        private DataBaseConnector db = new DataBaseConnector();
+        public Flashcard(int ID)
+        {
+            this.ID = ID;
+            elements = getElements(ID);
+        }
 
-    private List<String> getElements(int ID)
-    {
-        elements = db.getRecord(ID);
-        return elements;
+        private List<String> getElements(int ID)
+        {
+            elements = db.getRecord(ID);
+            return elements;
+        }
+
     }
 
 }

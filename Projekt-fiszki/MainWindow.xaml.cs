@@ -23,6 +23,7 @@ namespace Projekt_fiszki
         public static DataBaseConnector db = new DataBaseConnector();
         public Remeber remember = new Remeber();
         private Flashcard f = null;
+        public int numberOfQuestions = 3;
         private int firstLanguage = 1;
         private int secondLanguage = 2;
         public MainWindow()
@@ -130,7 +131,7 @@ namespace Projekt_fiszki
         }
         private void Remember_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (f != null)
+            if(f != null)
             {
                 String temp = null;
                 temp = remember.parseString(firstLanguage, secondLanguage, f.elements.ElementAt(firstLanguage), f.elements.ElementAt(secondLanguage));
@@ -170,7 +171,7 @@ namespace Projekt_fiszki
             }
 
         }
-
+        
         private void Button_Click_New_Flashcard(object sender, RoutedEventArgs e)
         {
             AddFlashCardTeach();
@@ -179,12 +180,12 @@ namespace Projekt_fiszki
 
         private void NewFlashCard_button_MouseEnter(object sender, MouseEventArgs e)
         {
-            if (f != null)
+            if(f!=null)
             {
                 NewFlashCard_button.Content = f.elements.ElementAt(secondLanguage);
                 NewFlashCard_button.Background = Brushes.IndianRed;
             }
-
+                
             else
                 NewFlashCard_button.Content = "...";
         }
@@ -196,17 +197,47 @@ namespace Projekt_fiszki
                 NewFlashCard_button.Content = f.elements.ElementAt(firstLanguage);
                 NewFlashCard_button.Background = Brushes.BlueViolet;
             }
-
-
-        }
-
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-
+                
+            
         }
 
         private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
+            numberOfQuestions = 3;
+        }
+
+        private void RadioButton_Checked_2(object sender, RoutedEventArgs e)
+        {
+            numberOfQuestions = 5;
+        }
+
+        private void RadioButton_Checked_3(object sender, RoutedEventArgs e)
+        {
+            numberOfQuestions = 10;
+        }
+
+        private void Button_Click_Start_Test(object sender, RoutedEventArgs e)
+        {
+            rb1.Visibility = Visibility.Hidden;
+            rb2.Visibility = Visibility.Hidden;
+            rb3.Visibility = Visibility.Hidden;
+            label3.Visibility = Visibility.Hidden;
+            start_test.Visibility = Visibility.Hidden;
+            cb3.Visibility = Visibility.Hidden;
+            //
+            TextBox2.Visibility = Visibility.Visible;
+            rec.Visibility = Visibility.Visible;
+            border.Visibility = Visibility.Visible;
+            label2.Visibility = Visibility.Visible;
+            label4.Visibility = Visibility.Visible;
+            nextTest.Visibility = Visibility.Visible;
+            label5.Visibility = Visibility.Visible;
+
+            label4.Content = $"Progres: 1/{numberOfQuestions}";
+
+            Test test = new Test(numberOfQuestions);
+            Flashcard t = test.getFlashcard(0);
+            label2.Content = t.elements.ElementAt(firstLanguage);
 
         }
     }
