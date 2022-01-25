@@ -18,8 +18,9 @@
                         <ComboBoxItem>Francuski - Polski</ComboBoxItem>
                         <ComboBoxItem>Włoski - Polski</ComboBoxItem>
                     </ComboBox>
+                    <Button Content="Pokaż poprawną" Name="checkCorrect" HorizontalAlignment="Left" Visibility="Hidden" Height="36" Margin="619,210,0,0" VerticalAlignment="Top" Width="150" Click="checkCorrect_Click"/>
                     <Button Content="Sprawdź!" Name="zatwierdz" HorizontalAlignment="Left" Height="36" Margin="619,260,0,0" VerticalAlignment="Top" Width="112" Click="Button_Click_Check"/>
-                    <Button Content="Następna" x:Name="next" HorizontalAlignment="Left" Height="36" Margin="619,309,0,0" VerticalAlignment="Top" Width="112" Click="Button_Click_Next"/>
+                    <Button Content="Następna" x:Name="next" HorizontalAlignment="Left" Height="36" Margin="619,310,0,0" VerticalAlignment="Top" Width="112" Click="Button_Click_Next"/>
                     <Rectangle HorizontalAlignment="Center" Height="160" Margin="0,90,0,0" Stroke="Black" VerticalAlignment="Top" Width="336"/>
                     <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" VerticalAlignment="Top" Width="384"/>
                     <TextBox x:Name="TextBox1" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" TextWrapping="Wrap" Background="Transparent" VerticalAlignment="Top" Width="384"/>
@@ -27,7 +28,7 @@
                     <Label HorizontalAlignment="Left" FontSize="15" Background="Transparent"  Height="52" Content="Wpisz tłumaczenie:" Width="137"  Margin="64,293,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
                     <Button Name="Remember_Button" HorizontalAlignment="Left" Height="50" Margin="716,65,0,0" VerticalAlignment="Top" Width="50" Click="Remember_Button_Click">
                         <StackPanel>
-                            <Image Source="brain.png" />
+                            <Image Source="brain.png" Height="46" Width="47" />
                         </StackPanel>
                     </Button>
 
@@ -76,12 +77,13 @@
                     <Rectangle HorizontalAlignment="Center" Height="160" Margin="0,90,0,0" Stroke="Black" VerticalAlignment="Top" Width="336"/>
 
 
-                    <Button Name ="NewFlashCard_button" HorizontalAlignment="Center"  Content="..." Background="Transparent" HorizontalContentAlignment="Center" FontSize="70" Height="158" Width="334"  Margin="0,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Click="Button_Click_New_Flashcard" MouseEnter="NewFlashCard_button_MouseEnter" MouseLeave="NewFlashCard_button_MouseLeave"/>
+                    <Button Name ="NewFlashCard_button" HorizontalAlignment="Center"  Content="..." Background="Transparent" HorizontalContentAlignment="Center" FontSize="70" Height="158" Width="334"  Margin="0,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" MouseEnter="NewFlashCard_button_MouseEnter" MouseLeave="NewFlashCard_button_MouseLeave"/>
                     <Button HorizontalAlignment="Left" Height="50" Margin="716,65,0,0" VerticalAlignment="Top" Width="50" Click="Remember_Button_Click">
                         <StackPanel>
                             <Image Source="brain.png" />
                         </StackPanel>
                     </Button>
+                    <Button Content="Następna" x:Name="next_Teach" HorizontalAlignment="Center" Height="47" Margin="0,308,0,0" VerticalAlignment="Top" Width="142" Click="Button_Click_New_Flashcard"/>
 
                 </Grid>
             </TabItem>
@@ -98,17 +100,10 @@
             <TabItem Header="Zapamiętane" FontSize="20" Height="50" Width="133">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
                     <ListBox x:Name="ListBox_Remember" Margin="10,62,132,10" SelectionChanged="ListBox_SelectionChanged"/>
-                    <Button x:Name="Button_Zapamietane_Usun" Content="Usuń" HorizontalAlignment="Left" Margin="701,62,0,0" VerticalAlignment="Top" Height="180" RenderTransformOrigin="0.5,0.5" Width="85" Click="Button_Zapamietane_Usun_Click">
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform AngleX="0"/>
-                                <RotateTransform/>
-                                <TranslateTransform X="0"/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
+                    <Button x:Name="Button_Zapamietane_Usun" Content="Usuń" HorizontalAlignment="Left" Margin="664,62,0,0" VerticalAlignment="Top" Height="180" RenderTransformOrigin="0.5,0.5" Width="132" Click="Button_Zapamietane_Usun_Click">
+
                     </Button>
-                    <Button x:Name="Button_Zapamietane_UsunWszystkie" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="701,242,0,0" VerticalAlignment="Top" Height="180" Width="85" Click="Button_Zapamietane_UsunWszystkie_Click">
+                    <Button x:Name="Button_Zapamietane_UsunWszystkie" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="664,242,0,0" VerticalAlignment="Top" Height="180" Width="132" Click="Button_Zapamietane_UsunWszystkie_Click">
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Usuń <LineBreak/>wszystkie</TextBlock>
                     </Button>
                 </Grid>

@@ -20,12 +20,17 @@ namespace Projekt_fiszki
     public partial class MainWindow : Window
     {
 
-        public static DataBaseConnector db = new DataBaseConnector();
-        public Remeber remember = new Remeber();
+        private static DataBaseConnector db = new DataBaseConnector();
+        private Remeber remember = new Remeber();
+        private Flashcard f_Teach = null;
         private Flashcard f = null;
-        public int numberOfQuestions = 3;
+        private int numberOfQuestions = 3;
         private int firstLanguage = 1;
         private int secondLanguage = 2;
+        private int nr_label;
+        private Test test;
+        private int score_test;
+        private Flashcard t;
         public MainWindow()
         {
             InitializeComponent();
@@ -35,15 +40,32 @@ namespace Projekt_fiszki
         {
             f = null;
             AddFlashCardWrite();
-        }
-        private void Button_Click_Check(object sender, RoutedEventArgs e)
-        {
-            if (TextBox1.Text != f.elements.ElementAt(secondLanguage))
-                label1.Background = Brushes.Red;
-            else
-                label1.Background = Brushes.LightGreen;
+            checkCorrect.Visibility = Visibility.Hidden;
             TextBox1.Text = "";
         }
+
+        private void Button_Click_Check(object sender, RoutedEventArgs e)
+        {
+            if (f == null) { }
+            else
+            {
+                if (TextBox1.Text != f.elements.ElementAt(secondLanguage))
+                {
+                    label1.Background = Brushes.Red;
+                    checkCorrect.Visibility = Visibility.Visible;
+                }
+                else
+                    label1.Background = Brushes.LightGreen;
+            }
+            
+        }
+
+        private void checkCorrect_Click(object sender, RoutedEventArgs e)
+        {
+            label1.Content = f.elements.ElementAt(secondLanguage);
+            label1.Background = Brushes.Bisque;
+        }
+
         private void AddFlashCardWrite()
         {
 
@@ -56,16 +78,18 @@ namespace Projekt_fiszki
         private void AddFlashCardTeach()
         {
 
-            f = new Flashcard(randFlashcard());
-            NewFlashCard_button.Content = f.elements.ElementAt(firstLanguage); //Numerowane od 0 ale 0 to ID
+            f_Teach = new Flashcard(randFlashcard());
+            NewFlashCard_button.Content = f_Teach.elements.ElementAt(firstLanguage); //Numerowane od 0 ale 0 to ID
             NewFlashCard_button.Background = Brushes.IndianRed;
         }
+
         private static int randFlashcard()
         {
             int n = db.NumberOfRows();
             Random rand = new Random();
             return rand.Next(1, (n + 1)); //losuje od [n, m)
         }
+
         private void cb1_DropDownClosed(object sender, EventArgs e)
         {
             switch (cb1.Text)
@@ -160,9 +184,21 @@ namespace Projekt_fiszki
                     break;
             }
         }
+
         private void Remember_Button_Click(object sender, RoutedEventArgs e)
         {
-            if(f != null)
+            if(f_Teach != null)
+            {
+                String temp = null;
+                temp = remember.parseString(firstLanguage, secondLanguage, f_Teach.elements.ElementAt(firstLanguage), f_Teach.elements.ElementAt(secondLanguage));
+
+                Boolean x = remember.checkList(temp);
+                if (x == true)
+                {
+                    ListBox_Remember.Items.Add(temp);
+                }
+            }
+            else if(f != null)
             {
                 String temp = null;
                 temp = remember.parseString(firstLanguage, secondLanguage, f.elements.ElementAt(firstLanguage), f.elements.ElementAt(secondLanguage));
@@ -211,28 +247,22 @@ namespace Projekt_fiszki
 
         private void NewFlashCard_button_MouseEnter(object sender, MouseEventArgs e)
         {
-            if(f!=null)
+            if (f_Teach != null)
             {
-                NewFlashCard_button.Content = f.elements.ElementAt(secondLanguage);
+                NewFlashCard_button.Content = f_Teach.elements.ElementAt(secondLanguage);
                 NewFlashCard_button.Background = Brushes.IndianRed;
             }
-                
             else
                 NewFlashCard_button.Content = "...";
         }
 
         private void NewFlashCard_button_MouseLeave(object sender, MouseEventArgs e)
         {
-            if (f != null)
+            if (f_Teach != null)
             {
-                NewFlashCard_button.Content = f.elements.ElementAt(firstLanguage);
-                NewFlashCard_button.Background = Brushes.BlueViolet;
+                NewFlashCard_button.Content = f_Teach.elements.ElementAt(firstLanguage);
             }
-                
-            
         }
-
-       
 
         private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
@@ -249,10 +279,6 @@ namespace Projekt_fiszki
             numberOfQuestions = 10;
         }
 
-        int nr_label;
-        Test test;
-        int score_test;
-        Flashcard t;
         private void Button_Click_Start_Test(object sender, RoutedEventArgs e)
         {
             rb1.Visibility = Visibility.Hidden;
@@ -331,13 +357,13 @@ namespace Projekt_fiszki
 
         }
 
-       
     }
 }
 
 //TODO 
-/*  Duze i male litery nie mają znaczenia!
- * 
+/*  Duze i male litery nie mają znaczenia! ->   string.Equals(name, "ashley", StringComparison.CurrentCultureIgnoreCase);
+ *                                          ->  if (String.Compare(name, "ashley", true) == 0)
+ *  Upewnić się, że wszystkie zmienne są po angielsku etc!
  * 
  * 
  * */
