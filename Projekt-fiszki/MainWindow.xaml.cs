@@ -26,12 +26,10 @@ namespace Projekt_fiszki
         private Flashcard f_write = null;
         private Flashcard f_race = null;
         private int numberOfQuestions = 3;
-        //private static int firstLanguage = 1;
-        //private static int secondLanguage = 2;
         private int nr_label;
         private Test test;
-        private int score_test;
         private Flashcard t;
+        private int score_test;
         private int time = 10;
         private DispatcherTimer Timer;
         private int numberOfQuestions_race = 0;
@@ -84,6 +82,7 @@ namespace Projekt_fiszki
             TextBox1.Text = "";
             label1.Background = Brushes.WhiteSmoke;
         }
+
         private void AddFlashCardTeach()
         {
 
@@ -228,18 +227,36 @@ namespace Projekt_fiszki
 
         private void Button_Click_Start_Test(object sender, RoutedEventArgs e)
         {
-            Grid2.Visibility = Visibility.Hidden;
-            Grid1.Visibility = Visibility.Visible;
-            nextTest.Visibility = Visibility.Visible;
 
-            score_test = 0;
-            nr_label = 1;
-            label4.Content = $"Progres: {nr_label}/{numberOfQuestions}";
-            test = new Test(numberOfQuestions);
-            t = test.getFlashcard(0);
-            label2.Content = t.elements.ElementAt(combob3.firstLanguage);
-            nr_label = 2;
+            Boolean temp = false;
+            if (rb4.IsChecked == true)
+            {
+                try
+                {
+                    numberOfQuestions = Convert.ToInt32(TextBox5.Text);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Zły format danych!");
+                    temp = true;
+                }
+            }
+            if (temp == false)
+            {
+                Grid2.Visibility = Visibility.Hidden;
+                Grid1.Visibility = Visibility.Visible;
+                nextTest.Visibility = Visibility.Visible;
 
+                score_test = 0;
+                nr_label = 1;
+                label4.Content = $"Progres: {nr_label}/{numberOfQuestions}";
+                test = new Test(numberOfQuestions);
+                t = test.getFlashcard(0);
+                label2.Content = t.elements.ElementAt(combob3.firstLanguage);
+                nr_label = 2;
+            }
+            rb1.IsChecked = true;
+            TextBox5.Text = "";
         }
 
         private void nextTest_Click(object sender, RoutedEventArgs e)
@@ -288,6 +305,7 @@ namespace Projekt_fiszki
                 try
                 {
                     time = Convert.ToInt32(TextBox4.Text);
+                    MessageBox.Show($"{time}");
                 }
                 catch (FormatException)
                 {
@@ -309,6 +327,7 @@ namespace Projekt_fiszki
                 label8.Content = "...";
             }
         }
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             if (time > 0)
@@ -359,10 +378,3 @@ namespace Projekt_fiszki
 
     }
 }
-
-//TODO 
-/*  
- *  
- *  W radioButtonach dodać czas niestandardowy
- * 
- * */
