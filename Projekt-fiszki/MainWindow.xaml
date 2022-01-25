@@ -8,7 +8,7 @@
         Title="Nauka przez fiszki" Height="450" Width="802" ResizeMode="NoResize" Background="#FFE5E5E5">
     <Grid>
         <TabControl HorizontalAlignment="Center" Width="802">
-            <TabItem Header="Pisanie" FontSize="20" Height="50" Width="133">
+            <TabItem Header="Pisanie" FontSize="20" Height="50" Width="160">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
                     <ComboBox Name="cb1" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb1_DropDownClosed">
                         <ComboBoxItem IsSelected="True">Polski - Angielski</ComboBoxItem>
@@ -35,7 +35,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Test" FontSize="20" Height="50" Width="133">
+            <TabItem Header="Test" FontSize="20" Height="50" Width="160">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
                     <Rectangle Name ="rec" HorizontalAlignment="Center" Height="160" Margin="0,90,0,0" Stroke="Black" VerticalAlignment="Top" Width="336" Visibility="Hidden"/>
                     <Border Name="border" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" VerticalAlignment="Top" Width="384" Visibility="Hidden"/>
@@ -63,7 +63,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Nauka" FontSize="20" Height="50" Width="133">
+            <TabItem Header="Nauka" FontSize="20" Height="50" Width="160">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
 
                     <ComboBox Name="cb2" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb2_DropDownClosed">
@@ -87,12 +87,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Dopasowanie" FontSize="20" Height="50" Width="133">
-                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
-                    <ComboBox HorizontalAlignment="Left" Margin="636,90,0,314" Width="150" Height="28"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Wyścig" FontSize="20" Height="50" Width="133">
+            <TabItem Header="Wyścig" FontSize="20" Height="50" Width="159">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="-0.279,0.135" Margin="0,-56,0,0">
 
                     <ComboBox Name="cb4" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb4_DropDownClosed">
@@ -126,7 +121,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Zapamiętane" FontSize="20" Height="50" Width="133">
+            <TabItem Header="Zapamiętane" FontSize="20" Height="50" Width="159">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
                     <ListBox x:Name="ListBox_Remember" Margin="10,62,132,10" SelectionChanged="ListBox_SelectionChanged"/>
                     <Button x:Name="Button_Zapamietane_Usun" Content="Usuń" HorizontalAlignment="Left" Margin="664,62,0,0" VerticalAlignment="Top" Height="180" RenderTransformOrigin="0.5,0.5" Width="132" Click="Button_Zapamietane_Usun_Click">

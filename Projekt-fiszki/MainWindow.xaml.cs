@@ -254,9 +254,6 @@ namespace Projekt_fiszki
             }
         }
 
-        private void Show_remebered_Button_Click(object sender, RoutedEventArgs e)
-        {
-        }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -327,7 +324,16 @@ namespace Projekt_fiszki
 
         private void RadioButton_Checked_4(object sender, RoutedEventArgs e)
         {
-            time = Convert.ToInt32(TextBox4.Text);
+            try
+            {
+                time = Convert.ToInt32(TextBox4.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Zły format danych!");
+                TextBox4.Text = "";
+                rb1_w.IsChecked = true;
+            }
         }
 
         private void Button_Click_Start_Test(object sender, RoutedEventArgs e)
