@@ -461,7 +461,6 @@ namespace Projekt_fiszki
 
         }
 
-
         private void Button_Click_Next_w(object sender, RoutedEventArgs e)
         {
             
