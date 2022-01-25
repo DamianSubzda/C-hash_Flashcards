@@ -107,9 +107,10 @@
                     <TextBlock Name="Counter" HorizontalAlignment="Left" Margin="593,73,0,0"  TextWrapping="Wrap" Visibility="Hidden" FontSize="50" VerticalAlignment="Top" Height="57" Width="180"/>
                     <Button Name="Counter_Start_Button" HorizontalAlignment="Center" Content="Start" Margin="0,340,0,0" VerticalAlignment="Top" Click="Timer_Start_Button_Click" Height="49" Width="76"/>
 
-                    <RadioButton IsChecked="true" Name ="rb1_w" Content="10s" HorizontalAlignment="Left" Margin="243,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="56" RenderTransformOrigin="0.933,0.001" Checked="RadioButton_Checked_1"/>
-                    <RadioButton Name ="rb2_w" Content="30s" HorizontalAlignment="Center" Margin="0,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="76" RenderTransformOrigin="0.5,0.5" Checked="RadioButton_Checked_2"/>
-                    <RadioButton Name ="rb3_w" Content="60s" HorizontalAlignment="Left" Margin="511,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="61" RenderTransformOrigin="0.182,0.035" Checked="RadioButton_Checked_3"/>
+                    <RadioButton IsChecked="true" Name ="rb1_w" Content="10s" HorizontalAlignment="Left" Margin="132,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="56" RenderTransformOrigin="0.933,0.001" Checked="RadioButton_Checked_1"/>
+                    <RadioButton Name ="rb2_w" Content="30s" HorizontalAlignment="Left" Margin="230,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="76" RenderTransformOrigin="0.5,0.5" Checked="RadioButton_Checked_2"/>
+                    <RadioButton Name ="rb3_w" Content="60s" HorizontalAlignment="Left" Margin="319,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="61" RenderTransformOrigin="0.182,0.035" Checked="RadioButton_Checked_3"/>
+                    <RadioButton Name ="rb4_w" Content="Niestandardowy:" HorizontalAlignment="Left" Margin="421,219,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="184" RenderTransformOrigin="0.182,0.035" Checked="RadioButton_Checked_4"/>
                     <Label Name="label7" Content="Wybierz czas:" FontSize="40" HorizontalAlignment="Left" Margin="218,118,0,0" VerticalAlignment="Top" Height="68" Width="324"/>
 
                     <Rectangle Name="rectangle1" HorizontalAlignment="Center" Height="160" Margin="0,90,0,0" Stroke="Black" Visibility="Hidden" VerticalAlignment="Top" Width="336"/>
@@ -120,6 +121,8 @@
                     <Button Content="Następna" x:Name="next_w" HorizontalAlignment="Left" Height="36" Margin="619,310,0,0" Visibility="Hidden" VerticalAlignment="Top" Width="112" Click="Button_Click_Next_w"/>
                     <Label x:Name="label10" FontSize="40" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="90" Margin="0,170,0,0" VerticalAlignment="Top" Width="596" Visibility="Hidden"/>
                     <Button x:Name="newRace_button" Content="Rozpocznij nowy wyscig" HorizontalAlignment="Center" Height="78" Margin="0,284,0,0" VerticalAlignment="Top" Width="445" Click="newRace_button_Click" Visibility="Hidden"/>
+                    <TextBox x:Name="TextBox4" HorizontalAlignment="Left" Margin="593,219,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+                    <Label x:Name="label11" Content="s" HorizontalAlignment="Left" Margin="675,215,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.595,-0.299"/>
 
                 </Grid>
             </TabItem>
