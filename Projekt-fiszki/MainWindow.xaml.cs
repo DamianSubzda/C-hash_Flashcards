@@ -53,7 +53,7 @@ namespace Projekt_fiszki
             if (f == null) { }
             else
             {
-                if (TextBox1.Text != f.elements.ElementAt(secondLanguage))
+                if (!(string.Equals(TextBox1.Text, f.elements.ElementAt(secondLanguage), StringComparison.CurrentCultureIgnoreCase)))
                 {
                     label1.Background = Brushes.Red;
                     checkCorrect.Visibility = Visibility.Visible;
@@ -325,6 +325,11 @@ namespace Projekt_fiszki
             time = 60;
         }
 
+        private void RadioButton_Checked_4(object sender, RoutedEventArgs e)
+        {
+            time = Convert.ToInt32(TextBox4.Text);
+        }
+
         private void Button_Click_Start_Test(object sender, RoutedEventArgs e)
         {
             rb1.Visibility = Visibility.Hidden;
@@ -354,7 +359,7 @@ namespace Projekt_fiszki
 
         private void nextTest_Click(object sender, RoutedEventArgs e)
         {
-            if (TextBox2.Text == t.elements.ElementAt(secondLanguage))
+            if (string.Equals(TextBox2.Text, t.elements.ElementAt(secondLanguage), StringComparison.CurrentCultureIgnoreCase))
                 score_test++;
             TextBox2.Text = "";
             t = test.getFlashcard(nr_label-1);
@@ -372,7 +377,7 @@ namespace Projekt_fiszki
 
         private void endTest_Click(object sender, RoutedEventArgs e)
         {
-            if (TextBox2.Text == t.elements.ElementAt(secondLanguage))
+            if (string.Equals(TextBox2.Text, t.elements.ElementAt(secondLanguage), StringComparison.CurrentCultureIgnoreCase))
                 score_test++;
             t = null;
             TextBox2.Text = "";
@@ -416,6 +421,10 @@ namespace Projekt_fiszki
             rb1_w.Visibility = Visibility.Hidden;
             rb2_w.Visibility = Visibility.Hidden;
             rb3_w.Visibility = Visibility.Hidden;
+            //
+            rb4_w.Visibility = Visibility.Hidden;
+            TextBox4.Visibility = Visibility.Hidden;
+            label11.Visibility = Visibility.Hidden;
             //
             label8.Visibility = Visibility.Visible;
             TextBox3.Visibility = Visibility.Visible;
@@ -467,7 +476,7 @@ namespace Projekt_fiszki
             
             if(f_race != null)
             {
-                if(f_race.elements.ElementAt(secondLanguage) == TextBox3.Text)
+                if (string.Equals(TextBox3.Text, f_race.elements.ElementAt(secondLanguage), StringComparison.CurrentCultureIgnoreCase))
                 {
                     score_test++;
                 }
@@ -489,8 +498,13 @@ namespace Projekt_fiszki
             rb3_w.Visibility = Visibility.Visible;
             numberOfQuestions_race = 0;
             score_test = 0;
+            //
+            rb4_w.Visibility = Visibility.Visible;
+            TextBox4.Visibility = Visibility.Visible;
+            label11.Visibility = Visibility.Visible;
 
         }
+
     }
 }
 
