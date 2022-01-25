@@ -23,11 +23,11 @@ namespace Projekt_fiszki
         private static DataBaseConnector db = new DataBaseConnector();
         private Remeber remember = new Remeber();
         private Flashcard f_Teach = null;
-        private Flashcard f = null;
+        private Flashcard f_write = null;
         private Flashcard f_race = null;
         private int numberOfQuestions = 3;
-        private int firstLanguage = 1;
-        private int secondLanguage = 2;
+        //private static int firstLanguage = 1;
+        //private static int secondLanguage = 2;
         private int nr_label;
         private Test test;
         private int score_test;
@@ -35,6 +35,12 @@ namespace Projekt_fiszki
         private int time = 10;
         private DispatcherTimer Timer;
         private int numberOfQuestions_race = 0;
+
+        private ComboBox combob1 = new ComboBox(1,2);
+        private ComboBox combob2 = new ComboBox(1,2);
+        private ComboBox combob3 = new ComboBox(1,2);
+        private ComboBox combob4 = new ComboBox(1,2);
+
         public MainWindow()
         {
             InitializeComponent();
@@ -42,7 +48,7 @@ namespace Projekt_fiszki
 
         private void Button_Click_Next(object sender, RoutedEventArgs e)
         {
-            f = null;
+            f_write = null;
             AddFlashCardWrite();
             checkCorrect.Visibility = Visibility.Hidden;
             TextBox1.Text = "";
@@ -50,10 +56,10 @@ namespace Projekt_fiszki
 
         private void Button_Click_Check(object sender, RoutedEventArgs e)
         {
-            if (f == null) { }
+            if (f_write == null) { }
             else
             {
-                if (!(string.Equals(TextBox1.Text, f.elements.ElementAt(secondLanguage), StringComparison.CurrentCultureIgnoreCase)))
+                if (!(string.Equals(TextBox1.Text, f_write.elements.ElementAt(combob2.secondLanguage), StringComparison.CurrentCultureIgnoreCase)))
                 {
                     label1.Background = Brushes.Red;
                     checkCorrect.Visibility = Visibility.Visible;
@@ -61,36 +67,35 @@ namespace Projekt_fiszki
                 else
                     label1.Background = Brushes.LightGreen;
             }
-            
+
         }
 
         private void checkCorrect_Click(object sender, RoutedEventArgs e)
         {
-            label1.Content = f.elements.ElementAt(secondLanguage);
+            label1.Content = f_write.elements.ElementAt(combob2.secondLanguage);
             label1.Background = Brushes.Bisque;
         }
 
         private void AddFlashCardWrite()
         {
 
-            f = new Flashcard(randFlashcard());
-            label1.Content = f.elements.ElementAt(firstLanguage); //Numerowane od 0 ale 0 to ID
+            f_write = new Flashcard(randFlashcard());
+            label1.Content = f_write.elements.ElementAt(combob2.firstLanguage); //Numerowane od 0 ale 0 to ID
             TextBox1.Text = "";
             label1.Background = Brushes.WhiteSmoke;
         }
-
         private void AddFlashCardTeach()
         {
 
             f_Teach = new Flashcard(randFlashcard());
-            NewFlashCard_button.Content = f_Teach.elements.ElementAt(firstLanguage); //Numerowane od 0 ale 0 to ID
+            NewFlashCard_button.Content = f_Teach.elements.ElementAt(combob1.firstLanguage); //Numerowane od 0 ale 0 to ID
             NewFlashCard_button.Background = Brushes.IndianRed;
         }
 
         private void AddFlashCardRace()
         {
             f_race = new Flashcard(randFlashcard());
-            label8.Content = f_race.elements.ElementAt(firstLanguage);
+            label8.Content = f_race.elements.ElementAt(combob4.firstLanguage);
             TextBox3.Text = "";
 
         }
@@ -104,136 +109,32 @@ namespace Projekt_fiszki
 
         private void cb1_DropDownClosed(object sender, EventArgs e)
         {
-            switch (cb1.Text)
-            {
-                case "Polski - Angielski":
-                    firstLanguage = 1;
-                    secondLanguage = 2;
-                    break;
-                case "Polski - Francuski":
-                    firstLanguage = 1;
-                    secondLanguage = 3;
-                    break;
-                case "Polski - Włoski":
-                    firstLanguage = 1;
-                    secondLanguage = 4;
-                    break;
-                case "Angielski - Polski":
-                    firstLanguage = 2;
-                    secondLanguage = 1;
-                    break;
-                case "Francuski - Polski":
-                    firstLanguage = 3;
-                    secondLanguage = 1;
-                    break;
-                case "Włoski - Polski":
-                    firstLanguage = 4;
-                    secondLanguage = 1;
-                    break;
-            }
-            AddFlashCardWrite();
+            combob1.setLanguage(cb1.Text);
+            AddFlashCardTeach();
         }
 
         private void cb2_DropDownClosed(object sender, EventArgs e)
         {
-            switch (cb2.Text)
-            {
-                case "Polski - Angielski":
-                    firstLanguage = 1;
-                    secondLanguage = 2;
-                    break;
-                case "Polski - Francuski":
-                    firstLanguage = 1;
-                    secondLanguage = 3;
-                    break;
-                case "Polski - Włoski":
-                    firstLanguage = 1;
-                    secondLanguage = 4;
-                    break;
-                case "Angielski - Polski":
-                    firstLanguage = 2;
-                    secondLanguage = 1;
-                    break;
-                case "Francuski - Polski":
-                    firstLanguage = 3;
-                    secondLanguage = 1;
-                    break;
-                case "Włoski - Polski":
-                    firstLanguage = 4;
-                    secondLanguage = 1;
-                    break;
-            }
-            AddFlashCardTeach();
+            combob2.setLanguage(cb2.Text);
+            AddFlashCardWrite();
         }
 
         private void cb3_DropDownClosed(object sender, EventArgs e)
         {
-            switch (cb3.Text)
-            {
-                case "Polski - Angielski":
-                    firstLanguage = 1;
-                    secondLanguage = 2;
-                    break;
-                case "Polski - Francuski":
-                    firstLanguage = 1;
-                    secondLanguage = 3;
-                    break;
-                case "Polski - Włoski":
-                    firstLanguage = 1;
-                    secondLanguage = 4;
-                    break;
-                case "Angielski - Polski":
-                    firstLanguage = 2;
-                    secondLanguage = 1;
-                    break;
-                case "Francuski - Polski":
-                    firstLanguage = 3;
-                    secondLanguage = 1;
-                    break;
-                case "Włoski - Polski":
-                    firstLanguage = 4;
-                    secondLanguage = 1;
-                    break;
-            }
+            combob3.setLanguage(cb3.Text);
         }
 
         private void cb4_DropDownClosed(object sender, EventArgs e)
         {
-            switch (cb4.Text)
-            {
-                case "Polski - Angielski":
-                    firstLanguage = 1;
-                    secondLanguage = 2;
-                    break;
-                case "Polski - Francuski":
-                    firstLanguage = 1;
-                    secondLanguage = 3;
-                    break;
-                case "Polski - Włoski":
-                    firstLanguage = 1;
-                    secondLanguage = 4;
-                    break;
-                case "Angielski - Polski":
-                    firstLanguage = 2;
-                    secondLanguage = 1;
-                    break;
-                case "Francuski - Polski":
-                    firstLanguage = 3;
-                    secondLanguage = 1;
-                    break;
-                case "Włoski - Polski":
-                    firstLanguage = 4;
-                    secondLanguage = 1;
-                    break;
-            }
+            combob4.setLanguage(cb4.Text);
         }
 
         private void Remember_Button_Click(object sender, RoutedEventArgs e)
         {
-            if(f_Teach != null)
+            if (f_Teach != null)
             {
                 String temp = null;
-                temp = remember.parseString(firstLanguage, secondLanguage, f_Teach.elements.ElementAt(firstLanguage), f_Teach.elements.ElementAt(secondLanguage));
+                temp = remember.parseString(combob1.firstLanguage, combob1.secondLanguage, f_Teach.elements.ElementAt(combob1.firstLanguage), f_Teach.elements.ElementAt(combob1.secondLanguage));
 
                 Boolean x = remember.checkList(temp);
                 if (x == true)
@@ -241,10 +142,10 @@ namespace Projekt_fiszki
                     ListBox_Remember.Items.Add(temp);
                 }
             }
-            else if(f != null)
+            else if (f_write != null)
             {
                 String temp = null;
-                temp = remember.parseString(firstLanguage, secondLanguage, f.elements.ElementAt(firstLanguage), f.elements.ElementAt(secondLanguage));
+                temp = remember.parseString(combob2.firstLanguage, combob2.secondLanguage, f_write.elements.ElementAt(combob2.firstLanguage), f_write.elements.ElementAt(combob2.secondLanguage));
 
                 Boolean x = remember.checkList(temp);
                 if (x == true)
@@ -253,13 +154,12 @@ namespace Projekt_fiszki
                 }
             }
         }
-
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }
 
-        private void Button_Zapamietane_UsunWszystkie_Click(object sender, RoutedEventArgs e)
+        private void Button_Remember_DeleteAll_Click(object sender, RoutedEventArgs e)
         {
             foreach (string s in ListBox_Remember.Items.OfType<string>().ToList())
             {
@@ -269,7 +169,7 @@ namespace Projekt_fiszki
 
         }
 
-        private void Button_Zapamietane_Usun_Click(object sender, RoutedEventArgs e)
+        private void Button_Remember_Delete_Click(object sender, RoutedEventArgs e)
         {
             foreach (string s in ListBox_Remember.SelectedItems.OfType<string>().ToList())
             {
@@ -278,18 +178,18 @@ namespace Projekt_fiszki
             }
 
         }
-        
+
         private void Button_Click_New_Flashcard(object sender, RoutedEventArgs e)
         {
             AddFlashCardTeach();
-            NewFlashCard_button.Background = Brushes.IndianRed;
+            //NewFlashCard_button.Background = Brushes.IndianRed;
         }
 
         private void NewFlashCard_button_MouseEnter(object sender, MouseEventArgs e)
         {
             if (f_Teach != null)
             {
-                NewFlashCard_button.Content = f_Teach.elements.ElementAt(secondLanguage);
+                NewFlashCard_button.Content = f_Teach.elements.ElementAt(combob1.secondLanguage);
                 NewFlashCard_button.Background = Brushes.IndianRed;
             }
             else
@@ -300,7 +200,7 @@ namespace Projekt_fiszki
         {
             if (f_Teach != null)
             {
-                NewFlashCard_button.Content = f_Teach.elements.ElementAt(firstLanguage);
+                NewFlashCard_button.Content = f_Teach.elements.ElementAt(combob1.firstLanguage);
             }
         }
 
@@ -324,55 +224,34 @@ namespace Projekt_fiszki
 
         private void RadioButton_Checked_4(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                time = Convert.ToInt32(TextBox4.Text);
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Zły format danych!");
-                TextBox4.Text = "";
-                rb1_w.IsChecked = true;
-            }
         }
 
         private void Button_Click_Start_Test(object sender, RoutedEventArgs e)
         {
-            rb1.Visibility = Visibility.Hidden;
-            rb2.Visibility = Visibility.Hidden;
-            rb3.Visibility = Visibility.Hidden;
-            label3.Visibility = Visibility.Hidden;
-            start_test.Visibility = Visibility.Hidden;
-            cb3.Visibility = Visibility.Hidden;
-            //
-            TextBox2.Visibility = Visibility.Visible;
-            rec.Visibility = Visibility.Visible;
-            border.Visibility = Visibility.Visible;
-            label2.Visibility = Visibility.Visible;
-            label4.Visibility = Visibility.Visible;
+            Grid2.Visibility = Visibility.Hidden;
+            Grid1.Visibility = Visibility.Visible;
             nextTest.Visibility = Visibility.Visible;
-            label5.Visibility = Visibility.Visible;
 
             score_test = 0;
             nr_label = 1;
             label4.Content = $"Progres: {nr_label}/{numberOfQuestions}";
             test = new Test(numberOfQuestions);
             t = test.getFlashcard(0);
-            label2.Content = t.elements.ElementAt(firstLanguage);
+            label2.Content = t.elements.ElementAt(combob3.firstLanguage);
             nr_label = 2;
 
         }
 
         private void nextTest_Click(object sender, RoutedEventArgs e)
         {
-            if (string.Equals(TextBox2.Text, t.elements.ElementAt(secondLanguage), StringComparison.CurrentCultureIgnoreCase))
+            if (string.Equals(TextBox2.Text, t.elements.ElementAt(combob3.secondLanguage), StringComparison.CurrentCultureIgnoreCase))
                 score_test++;
             TextBox2.Text = "";
-            t = test.getFlashcard(nr_label-1);
+            t = test.getFlashcard(nr_label - 1);
             label4.Content = $"Progres: {nr_label}/{numberOfQuestions}";
-            label2.Content = t.elements.ElementAt(firstLanguage);
+            label2.Content = t.elements.ElementAt(combob3.firstLanguage);
             nr_label++;
-            
+
             if (nr_label == numberOfQuestions + 1)
             {
                 nextTest.Visibility = Visibility.Hidden;
@@ -383,72 +262,59 @@ namespace Projekt_fiszki
 
         private void endTest_Click(object sender, RoutedEventArgs e)
         {
-            if (string.Equals(TextBox2.Text, t.elements.ElementAt(secondLanguage), StringComparison.CurrentCultureIgnoreCase))
+            if (string.Equals(TextBox2.Text, t.elements.ElementAt(combob3.secondLanguage), StringComparison.CurrentCultureIgnoreCase))
                 score_test++;
             t = null;
             TextBox2.Text = "";
             endTest.Visibility = Visibility.Hidden;
-            TextBox2.Visibility = Visibility.Hidden;
-            rec.Visibility = Visibility.Hidden;
-            border.Visibility = Visibility.Hidden;
-            label2.Visibility = Visibility.Hidden;
-            label4.Visibility = Visibility.Hidden;
-            nextTest.Visibility = Visibility.Hidden;
-            label5.Visibility = Visibility.Hidden;
-            label6.Visibility = Visibility.Visible;
-            newTest_button.Visibility = Visibility.Visible;
+            Grid1.Visibility = Visibility.Hidden;
+            Grid3.Visibility = Visibility.Visible;
             label6.Content = $"Twój wynik to {score_test}/{numberOfQuestions}.";
         }
 
         private void newTest_button_Click(object sender, RoutedEventArgs e)
         {
             test = null;
-            label6.Visibility = Visibility.Hidden;
-            newTest_button.Visibility = Visibility.Hidden;
-            rb1.Visibility = Visibility.Visible;
-            rb2.Visibility = Visibility.Visible;
-            rb3.Visibility = Visibility.Visible;
-            label3.Visibility = Visibility.Visible;
-            start_test.Visibility = Visibility.Visible;
-            cb3.Visibility = Visibility.Visible;
+            Grid3.Visibility = Visibility.Hidden;
+            Grid2.Visibility = Visibility.Visible;
 
         }
 
         private void Timer_Start_Button_Click(object sender, RoutedEventArgs e)
         {
-            Timer = new DispatcherTimer();
-            Timer.Interval = new TimeSpan(0, 0, 1);
-            Timer.Tick += Timer_Tick;
-            Timer.Start();
-            Counter.Text = $"{time % 6000 / 600}{time % 600 / 60}:{time % 60 / 10}{time % 10}";
-            Counter_Start_Button.Visibility = Visibility.Hidden;
-            Counter.Visibility = Visibility.Visible;
-            label7.Visibility = Visibility.Hidden;
-            rb1_w.Visibility = Visibility.Hidden;
-            rb2_w.Visibility = Visibility.Hidden;
-            rb3_w.Visibility = Visibility.Hidden;
-            //
-            rb4_w.Visibility = Visibility.Hidden;
-            TextBox4.Visibility = Visibility.Hidden;
-            label11.Visibility = Visibility.Hidden;
-            //
-            label8.Visibility = Visibility.Visible;
-            TextBox3.Visibility = Visibility.Visible;
-            next_w.Visibility = Visibility.Visible;
-            label9.Visibility = Visibility.Visible;
-            border1.Visibility = Visibility.Visible;
-            rectangle1.Visibility = Visibility.Visible;
-            //
-            label8.Content = "...";
-
-
+            Boolean temp = false;
+            if (rb4_w.IsChecked == true)
+            {
+                try
+                {
+                    time = Convert.ToInt32(TextBox4.Text);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Zły format danych!");
+                    TextBox4.Text = "";
+                    rb1_w.IsChecked = true;
+                    temp = true;
+                }
+            }
+            if (temp == false)
+            {
+                Timer = new DispatcherTimer();
+                Timer.Interval = new TimeSpan(0, 0, 1);
+                Timer.Tick += Timer_Tick;
+                Timer.Start();
+                Counter.Text = $"{time % 6000 / 600}{time % 600 / 60}:{time % 60 / 10}{time % 10}";
+                Grid4.Visibility = Visibility.Hidden;
+                Grid5.Visibility = Visibility.Visible;
+                label8.Content = "...";
+            }
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if(time > 0)
+            if (time > 0)
             {
                 time--;
-                Counter.Text = $"{time%6000 / 600}{time%600 / 60}:{time%60 / 10}{time % 10}";
+                Counter.Text = $"{time % 6000 / 600}{time % 600 / 60}:{time % 60 / 10}{time % 10}";
             }
             else
             {
@@ -461,16 +327,8 @@ namespace Projekt_fiszki
         {
             time = 10;
             rb1_w.IsChecked = true;
-            Counter.Visibility = Visibility.Hidden;
-            label8.Visibility = Visibility.Hidden;
-            TextBox3.Visibility = Visibility.Hidden;
-            next_w.Visibility = Visibility.Hidden;
-            label9.Visibility = Visibility.Hidden;
-            border1.Visibility = Visibility.Hidden;
-            rectangle1.Visibility = Visibility.Hidden;
-            //
-            label10.Visibility = Visibility.Visible;
-            newRace_button.Visibility = Visibility.Visible;
+            Grid5.Visibility = Visibility.Hidden;
+            Grid6.Visibility = Visibility.Visible;
             label10.Content = $"Twoj wynik to: {score_test}/{numberOfQuestions_race}";
             f_race = null;
 
@@ -478,10 +336,10 @@ namespace Projekt_fiszki
 
         private void Button_Click_Next_w(object sender, RoutedEventArgs e)
         {
-            
-            if(f_race != null)
+
+            if (f_race != null)
             {
-                if (string.Equals(TextBox3.Text, f_race.elements.ElementAt(secondLanguage), StringComparison.CurrentCultureIgnoreCase))
+                if (string.Equals(TextBox3.Text, f_race.elements.ElementAt(combob4.secondLanguage), StringComparison.CurrentCultureIgnoreCase))
                 {
                     score_test++;
                 }
@@ -493,30 +351,17 @@ namespace Projekt_fiszki
 
         private void newRace_button_Click(object sender, RoutedEventArgs e)
         {
-            label10.Visibility = Visibility.Hidden;
-            newRace_button.Visibility = Visibility.Hidden;
-            //
-            Counter_Start_Button.Visibility = Visibility.Visible;
-            label7.Visibility = Visibility.Visible;
-            rb1_w.Visibility = Visibility.Visible;
-            rb2_w.Visibility = Visibility.Visible;
-            rb3_w.Visibility = Visibility.Visible;
+            Grid6.Visibility = Visibility.Hidden;
+            Grid4.Visibility = Visibility.Visible;
             numberOfQuestions_race = 0;
             score_test = 0;
-            //
-            rb4_w.Visibility = Visibility.Visible;
-            TextBox4.Visibility = Visibility.Visible;
-            label11.Visibility = Visibility.Visible;
-
         }
 
     }
 }
 
 //TODO 
-/*  Duze i male litery nie mają znaczenia! ->   string.Equals(name, "ashley", StringComparison.CurrentCultureIgnoreCase);
- *                                          ->  if (String.Compare(name, "ashley", true) == 0)
- *  Upewnić się, że wszystkie zmienne są po angielsku etc!
+/*  
  *  
  *  W radioButtonach dodać czas niestandardowy
  * 

@@ -8,9 +8,33 @@
         Title="Nauka przez fiszki" Height="450" Width="802" ResizeMode="NoResize" Background="#FFE5E5E5">
     <Grid>
         <TabControl HorizontalAlignment="Center" Width="802">
+            <TabItem Header="Nauka" FontSize="20" Height="50" Width="160">
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
+
+                    <ComboBox Name="cb1" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb1_DropDownClosed">
+                        <ComboBoxItem IsSelected="True">Polski - Angielski</ComboBoxItem>
+                        <ComboBoxItem>Polski - Francuski</ComboBoxItem>
+                        <ComboBoxItem>Polski - Włoski</ComboBoxItem>
+                        <ComboBoxItem>Angielski - Polski</ComboBoxItem>
+                        <ComboBoxItem>Francuski - Polski</ComboBoxItem>
+                        <ComboBoxItem>Włoski - Polski</ComboBoxItem>
+                    </ComboBox>
+                    <Rectangle HorizontalAlignment="Center" Height="160" Margin="0,90,0,0" Stroke="Black" VerticalAlignment="Top" Width="336"/>
+
+
+                    <Button Name ="NewFlashCard_button" HorizontalAlignment="Center"  Content="..." Background="Transparent" HorizontalContentAlignment="Center" FontSize="70" Height="158" Width="334"  Margin="0,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" MouseEnter="NewFlashCard_button_MouseEnter" MouseLeave="NewFlashCard_button_MouseLeave"/>
+                    <Button HorizontalAlignment="Left" Height="50" Margin="716,65,0,0" VerticalAlignment="Top" Width="50" Click="Remember_Button_Click">
+                        <StackPanel>
+                            <Image Source="brain.png" />
+                        </StackPanel>
+                    </Button>
+                    <Button Content="Następna" x:Name="next_Teach" HorizontalAlignment="Center" Height="47" Margin="0,308,0,0" VerticalAlignment="Top" Width="142" Click="Button_Click_New_Flashcard"/>
+
+                </Grid>
+            </TabItem>
             <TabItem Header="Pisanie" FontSize="20" Height="50" Width="160">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
-                    <ComboBox Name="cb1" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb1_DropDownClosed">
+                    <ComboBox Name="cb2" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb2_DropDownClosed">
                         <ComboBoxItem IsSelected="True">Polski - Angielski</ComboBoxItem>
                         <ComboBoxItem>Polski - Francuski</ComboBoxItem>
                         <ComboBoxItem>Polski - Włoski</ComboBoxItem>
@@ -37,97 +61,82 @@
             </TabItem>
             <TabItem Header="Test" FontSize="20" Height="50" Width="160">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
-                    <Rectangle Name ="rec" HorizontalAlignment="Center" Height="160" Margin="0,90,0,0" Stroke="Black" VerticalAlignment="Top" Width="336" Visibility="Hidden"/>
-                    <Border Name="border" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" VerticalAlignment="Top" Width="384" Visibility="Hidden"/>
-                    <TextBox x:Name="TextBox2" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" TextWrapping="Wrap" Background="Transparent" VerticalAlignment="Top" Width="384" Visibility="Hidden"/>
-                    <Label x:Name="label2" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="70" Background="#FFF5F5F5"  Height="158" Content="..." Width="334"  Margin="0,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Visibility="Hidden"/>
-                    <RadioButton IsChecked="true" Name ="rb1" Content="3" HorizontalAlignment="Left" Margin="243,222,0,0" Visibility="Visible" VerticalAlignment="Top" Checked="RadioButton_Checked_1"   Height="30" Width="45" RenderTransformOrigin="0.933,0.001"/>
-                    <RadioButton Name ="rb2" Content="5" HorizontalAlignment="Center" Margin="0,222,0,0" Visibility="Visible" VerticalAlignment="Top" Checked="RadioButton_Checked_2" Height="30" Width="44" RenderTransformOrigin="0.5,0.5"/>
-                    <RadioButton Name ="rb3" Content="10" HorizontalAlignment="Left" Margin="511,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="44" RenderTransformOrigin="0.182,0.035" Checked="RadioButton_Checked_3"/>
-                    <Button Name="start_test" Content="Rozpocznij test" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,308,0,0" Click="Button_Click_Start_Test"/>
-                    <Label Name="label3" Content="Wybierz liczbę pytań:" FontSize ="35" HorizontalAlignment="Center" Visibility="Visible" Margin="0,129,0,0" VerticalAlignment="Top"/>
-                    <Label Name="label4" Content="0/0" HorizontalAlignment="Left" Margin="607,94,0,0" VerticalAlignment="Top" Width="160" Visibility="Hidden"/>
-                    <ComboBox x:Name="cb3" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb3_DropDownClosed">
-                        <ComboBoxItem IsSelected="True" Content="Polski - Angielski"/>
-                        <ComboBoxItem Content="Polski - Francuski"/>
-                        <ComboBoxItem Content="Polski - Włoski"/>
-                        <ComboBoxItem Content="Angielski - Polski"/>
-                        <ComboBoxItem Content="Francuski - Polski"/>
-                        <ComboBoxItem Content="Włoski - Polski"/>
-                    </ComboBox>
-                    <Button Name="nextTest" Content="Następny" HorizontalAlignment="Left" Margin="625,270,0,0" VerticalAlignment="Top" Height="53" Width="104" Visibility="Hidden" Click="nextTest_Click"/>
+                    <Grid x:Name="Grid1" Visibility="Hidden">
+                        <Rectangle Name ="rec" HorizontalAlignment="Center" Height="160" Margin="0,90,0,0" Stroke="Black" VerticalAlignment="Top" Width="336" />
+                        <Border Name="border" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" VerticalAlignment="Top" Width="384" />
+                        <TextBox x:Name="TextBox2" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" TextWrapping="Wrap" Background="Transparent" VerticalAlignment="Top" Width="384" />
+                        <Label x:Name="label2" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="70" Background="#FFF5F5F5"  Height="158" Content="..." Width="334"  Margin="0,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" />
+                        <Label Name="label4" Content="0/0" HorizontalAlignment="Left" Margin="607,94,0,0" VerticalAlignment="Top" Width="160"/>
+                        <Button Name="nextTest" Content="Następny" HorizontalAlignment="Left" Margin="625,270,0,0" VerticalAlignment="Top" Height="53" Width="104"  Click="nextTest_Click"/>
+                        <Label Name="label5" HorizontalAlignment="Left" FontSize="15" Background="Transparent"  Height="52" Content="Wpisz odpowiedz:" Width="137"  Margin="69,287,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" />
+                    </Grid>
+
+                    <Grid x:Name="Grid2">
+                        <RadioButton IsChecked="true" Name ="rb1" Content="3" HorizontalAlignment="Left" Margin="243,222,0,0" Visibility="Visible" VerticalAlignment="Top" Checked="RadioButton_Checked_1"   Height="30" Width="45" RenderTransformOrigin="0.933,0.001"/>
+                        <RadioButton Name ="rb2" Content="5" HorizontalAlignment="Center" Margin="0,222,0,0" Visibility="Visible" VerticalAlignment="Top" Checked="RadioButton_Checked_2" Height="30" Width="44" RenderTransformOrigin="0.5,0.5"/>
+                        <RadioButton Name ="rb3" Content="10" HorizontalAlignment="Left" Margin="511,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="44" RenderTransformOrigin="0.182,0.035" Checked="RadioButton_Checked_3"/>
+                        <Button Name="start_test" Content="Rozpocznij test" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,308,0,0" Click="Button_Click_Start_Test"/>
+                        <Label Name="label3" Content="Wybierz liczbę pytań:" FontSize ="35" HorizontalAlignment="Center" Visibility="Visible" Margin="0,129,0,0" VerticalAlignment="Top"/>
+                        <ComboBox x:Name="cb3" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb3_DropDownClosed">
+                            <ComboBoxItem IsSelected="True" Content="Polski - Angielski"/>
+                            <ComboBoxItem Content="Polski - Francuski"/>
+                            <ComboBoxItem Content="Polski - Włoski"/>
+                            <ComboBoxItem Content="Angielski - Polski"/>
+                            <ComboBoxItem Content="Francuski - Polski"/>
+                            <ComboBoxItem Content="Włoski - Polski"/>
+                        </ComboBox>
+                    </Grid>
+
                     <Button Name="endTest" Content="Zakończ" HorizontalAlignment="Left" Margin="625,270,0,0" VerticalAlignment="Top" Height="53" Width="104" Visibility="Hidden" Click="endTest_Click"/>
-                    <Label Name="label5" HorizontalAlignment="Left" FontSize="15" Background="Transparent"  Height="52" Content="Wpisz odpowiedz:" Width="137"  Margin="69,287,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" />
-                    <Label x:Name="label6" FontSize="40" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="90" Margin="0,170,0,0" VerticalAlignment="Top" Width="596" Visibility="Hidden"/>
-                    <Button x:Name="newTest_button" Content="Rozpocznij nowy test" HorizontalAlignment="Center" Height="78" Margin="0,284,0,0" VerticalAlignment="Top" Width="445" Click="newTest_button_Click" Visibility="Hidden"/>
-
+                    <Grid x:Name="Grid3" Visibility="Hidden">
+                        <Label x:Name="label6" FontSize="40" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="90" Margin="0,170,0,0" VerticalAlignment="Top" Width="596" />
+                        <Button x:Name="newTest_button" Content="Rozpocznij nowy test" HorizontalAlignment="Center" Height="78" Margin="0,284,0,0" VerticalAlignment="Top" Width="445" Click="newTest_button_Click" />
+                    </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Nauka" FontSize="20" Height="50" Width="160">
-                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
 
-                    <ComboBox Name="cb2" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb2_DropDownClosed">
-                        <ComboBoxItem IsSelected="True">Polski - Angielski</ComboBoxItem>
-                        <ComboBoxItem>Polski - Francuski</ComboBoxItem>
-                        <ComboBoxItem>Polski - Włoski</ComboBoxItem>
-                        <ComboBoxItem>Angielski - Polski</ComboBoxItem>
-                        <ComboBoxItem>Francuski - Polski</ComboBoxItem>
-                        <ComboBoxItem>Włoski - Polski</ComboBoxItem>
-                    </ComboBox>
-                    <Rectangle HorizontalAlignment="Center" Height="160" Margin="0,90,0,0" Stroke="Black" VerticalAlignment="Top" Width="336"/>
-
-
-                    <Button Name ="NewFlashCard_button" HorizontalAlignment="Center"  Content="..." Background="Transparent" HorizontalContentAlignment="Center" FontSize="70" Height="158" Width="334"  Margin="0,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" MouseEnter="NewFlashCard_button_MouseEnter" MouseLeave="NewFlashCard_button_MouseLeave"/>
-                    <Button HorizontalAlignment="Left" Height="50" Margin="716,65,0,0" VerticalAlignment="Top" Width="50" Click="Remember_Button_Click">
-                        <StackPanel>
-                            <Image Source="brain.png" />
-                        </StackPanel>
-                    </Button>
-                    <Button Content="Następna" x:Name="next_Teach" HorizontalAlignment="Center" Height="47" Margin="0,308,0,0" VerticalAlignment="Top" Width="142" Click="Button_Click_New_Flashcard"/>
-
-                </Grid>
-            </TabItem>
             <TabItem Header="Wyścig" FontSize="20" Height="50" Width="159">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="-0.279,0.135" Margin="0,-56,0,0">
-
-                    <ComboBox Name="cb4" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb4_DropDownClosed">
-                        <ComboBoxItem IsSelected="True">Polski - Angielski</ComboBoxItem>
-                        <ComboBoxItem>Polski - Francuski</ComboBoxItem>
-                        <ComboBoxItem>Polski - Włoski</ComboBoxItem>
-                        <ComboBoxItem>Angielski - Polski</ComboBoxItem>
-                        <ComboBoxItem>Francuski - Polski</ComboBoxItem>
-                        <ComboBoxItem>Włoski - Polski</ComboBoxItem>
-                    </ComboBox>
-
-                    <TextBlock Name="Counter" HorizontalAlignment="Left" Margin="593,73,0,0"  TextWrapping="Wrap" Visibility="Hidden" FontSize="50" VerticalAlignment="Top" Height="57" Width="180"/>
-                    <Button Name="Counter_Start_Button" HorizontalAlignment="Center" Content="Start" Margin="0,340,0,0" VerticalAlignment="Top" Click="Timer_Start_Button_Click" Height="49" Width="76"/>
-
-                    <RadioButton IsChecked="true" Name ="rb1_w" Content="10s" HorizontalAlignment="Left" Margin="132,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="56" RenderTransformOrigin="0.933,0.001" Checked="RadioButton_Checked_1"/>
-                    <RadioButton Name ="rb2_w" Content="30s" HorizontalAlignment="Left" Margin="230,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="76" RenderTransformOrigin="0.5,0.5" Checked="RadioButton_Checked_2"/>
-                    <RadioButton Name ="rb3_w" Content="60s" HorizontalAlignment="Left" Margin="319,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="61" RenderTransformOrigin="0.182,0.035" Checked="RadioButton_Checked_3"/>
-                    <RadioButton Name ="rb4_w" Content="Niestandardowy:" HorizontalAlignment="Left" Margin="421,219,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="184" RenderTransformOrigin="0.182,0.035" Checked="RadioButton_Checked_4"/>
-                    <Label Name="label7" Content="Wybierz czas:" FontSize="40" HorizontalAlignment="Left" Margin="218,118,0,0" VerticalAlignment="Top" Height="68" Width="324"/>
-
-                    <Rectangle Name="rectangle1" HorizontalAlignment="Center" Height="160" Margin="0,90,0,0" Stroke="Black" Visibility="Hidden" VerticalAlignment="Top" Width="336"/>
-                    <Border Name="border1" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" Height="52" Visibility="Hidden"  Margin="0,270,0,0" VerticalAlignment="Top" Width="384"/>
-                    <TextBox x:Name="TextBox3" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Height="52" Visibility="Hidden" Margin="0,270,0,0" TextWrapping="Wrap" Background="Transparent" VerticalAlignment="Top" Width="384"/>
-                    <Label x:Name="label8" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="70" Visibility="Hidden" Background="#FFF5F5F5"  Height="158" Content="..." Width="334"  Margin="0,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
-                    <Label Name="label9" HorizontalAlignment="Left" FontSize="15" Background="Transparent"  Height="52" Visibility="Hidden" Content="Wpisz tłumaczenie:" Width="137"  Margin="64,293,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
-                    <Button Content="Następna" x:Name="next_w" HorizontalAlignment="Left" Height="36" Margin="619,310,0,0" Visibility="Hidden" VerticalAlignment="Top" Width="112" Click="Button_Click_Next_w"/>
-                    <Label x:Name="label10" FontSize="40" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="90" Margin="0,170,0,0" VerticalAlignment="Top" Width="596" Visibility="Hidden"/>
-                    <Button x:Name="newRace_button" Content="Rozpocznij nowy wyscig" HorizontalAlignment="Center" Height="78" Margin="0,284,0,0" VerticalAlignment="Top" Width="445" Click="newRace_button_Click" Visibility="Hidden"/>
-                    <TextBox x:Name="TextBox4" HorizontalAlignment="Left" Margin="593,219,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-                    <Label x:Name="label11" Content="s" HorizontalAlignment="Left" Margin="675,215,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.595,-0.299"/>
-
+                    <Grid x:Name="Grid4">
+                        <ComboBox Name="cb4" HorizontalAlignment="Left" Margin="20,65,0,311" Width="181" DataContext="Hello" DropDownClosed="cb4_DropDownClosed">
+                            <ComboBoxItem IsSelected="True">Polski - Angielski</ComboBoxItem>
+                            <ComboBoxItem>Polski - Francuski</ComboBoxItem>
+                            <ComboBoxItem>Polski - Włoski</ComboBoxItem>
+                            <ComboBoxItem>Angielski - Polski</ComboBoxItem>
+                            <ComboBoxItem>Francuski - Polski</ComboBoxItem>
+                            <ComboBoxItem>Włoski - Polski</ComboBoxItem>
+                        </ComboBox>
+                        <Button Name="Counter_Start_Button" HorizontalAlignment="Center" Content="Start" Margin="0,340,0,0" VerticalAlignment="Top" Click="Timer_Start_Button_Click" Height="49" Width="76"/>
+                        <RadioButton IsChecked="true" Name ="rb1_w" Content="10s" HorizontalAlignment="Left" Margin="132,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="56" RenderTransformOrigin="0.933,0.001" Checked="RadioButton_Checked_1"/>
+                        <RadioButton Name ="rb2_w" Content="30s" HorizontalAlignment="Left" Margin="230,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="76" RenderTransformOrigin="0.5,0.5" Checked="RadioButton_Checked_2"/>
+                        <RadioButton Name ="rb3_w" Content="60s" HorizontalAlignment="Left" Margin="319,222,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="61" RenderTransformOrigin="0.182,0.035" Checked="RadioButton_Checked_3"/>
+                        <RadioButton Name ="rb4_w" Content="Niestandardowy:" HorizontalAlignment="Left" Margin="421,219,0,0" Visibility="Visible" VerticalAlignment="Top" Height="30" Width="184" RenderTransformOrigin="0.182,0.035" Checked="RadioButton_Checked_4"/>
+                        <Label Name="label7" Content="Wybierz czas:" FontSize="40" HorizontalAlignment="Left" Margin="218,118,0,0" VerticalAlignment="Top" Height="68" Width="324"/>
+                        <TextBox x:Name="TextBox4" HorizontalAlignment="Left" Margin="593,219,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+                        <Label x:Name="label11" Content="s" HorizontalAlignment="Left" Margin="675,215,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.595,-0.299"/>
+                    </Grid>
+                    <Grid x:Name="Grid5" Visibility="Hidden" >
+                        <TextBlock Name="Counter" HorizontalAlignment="Left" Margin="593,73,0,0"  TextWrapping="Wrap" FontSize="50" VerticalAlignment="Top" Height="57" Width="180"/>
+                        <Rectangle Name="rectangle1" HorizontalAlignment="Center" Height="160" Margin="0,90,0,0" Stroke="Black" VerticalAlignment="Top" Width="336"/>
+                        <Border Name="border1" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" VerticalAlignment="Top" Width="384"/>
+                        <TextBox x:Name="TextBox3" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" TextWrapping="Wrap" Background="Transparent" VerticalAlignment="Top" Width="384"/>
+                        <Label x:Name="label8" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="70" Background="#FFF5F5F5"  Height="158" Content="..." Width="334"  Margin="0,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+                        <Label Name="label9" HorizontalAlignment="Left" FontSize="15" Background="Transparent"  Height="52" Content="Wpisz tłumaczenie:" Width="137"  Margin="64,293,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+                        <Button Content="Następna" x:Name="next_w" HorizontalAlignment="Left" Height="36" Margin="619,310,0,0" VerticalAlignment="Top" Width="112" Click="Button_Click_Next_w"/>
+                    </Grid>
+                    <Grid x:Name="Grid6" Visibility="Hidden">
+                        <Label x:Name="label10" FontSize="40" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="90" Margin="0,170,0,0" VerticalAlignment="Top" Width="596" />
+                        <Button x:Name="newRace_button" Content="Rozpocznij nowy wyscig" HorizontalAlignment="Center" Height="78" Margin="0,284,0,0" VerticalAlignment="Top" Width="445" Click="newRace_button_Click" />
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Zapamiętane" FontSize="20" Height="50" Width="159">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.553,0.497" Margin="0,-56,0,0">
                     <ListBox x:Name="ListBox_Remember" Margin="10,62,132,10" SelectionChanged="ListBox_SelectionChanged"/>
-                    <Button x:Name="Button_Zapamietane_Usun" Content="Usuń" HorizontalAlignment="Left" Margin="664,62,0,0" VerticalAlignment="Top" Height="180" RenderTransformOrigin="0.5,0.5" Width="132" Click="Button_Zapamietane_Usun_Click">
+                    <Button x:Name="Button_Zapamietane_Usun" Content="Usuń" HorizontalAlignment="Left" Margin="664,62,0,0" VerticalAlignment="Top" Height="180" RenderTransformOrigin="0.5,0.5" Width="132" Click="Button_Remember_Delete_Click">
 
                     </Button>
-                    <Button x:Name="Button_Zapamietane_UsunWszystkie" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="664,242,0,0" VerticalAlignment="Top" Height="180" Width="132" Click="Button_Zapamietane_UsunWszystkie_Click">
+                    <Button x:Name="Button_Zapamietane_UsunWszystkie" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="664,242,0,0" VerticalAlignment="Top" Height="180" Width="132" Click="Button_Remember_DeleteAll_Click">
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Usuń <LineBreak/>wszystkie</TextBlock>
                     </Button>
                 </Grid>
