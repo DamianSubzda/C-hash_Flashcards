@@ -25,7 +25,7 @@ namespace Projekt_fiszki
         private Flashcard f_Teach = null;
         private Flashcard f_write = null;
         private Flashcard f_race = null;
-        private int numberOfQuestions = 3;
+        public int numberOfQuestions = 3;
         private int nr_label;
         private Test test;
         private Flashcard t;
@@ -205,7 +205,6 @@ namespace Projekt_fiszki
 
         private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
-            numberOfQuestions = 3;
             time = 10;
         }
 
@@ -287,6 +286,9 @@ namespace Projekt_fiszki
             Grid1.Visibility = Visibility.Hidden;
             Grid3.Visibility = Visibility.Visible;
             label6.Content = $"Twój wynik to {score_test}/{numberOfQuestions}.";
+            double temp2 = Convert.ToDouble(score_test)/ Convert.ToDouble(numberOfQuestions )* 100;
+            int temp = Convert.ToInt32(Math.Round(temp2, 2, MidpointRounding.ToEven));
+            label15.Content = $"Procentowo: {temp}%";
         }
 
         private void newTest_button_Click(object sender, RoutedEventArgs e)
@@ -305,7 +307,6 @@ namespace Projekt_fiszki
                 try
                 {
                     time = Convert.ToInt32(TextBox4.Text);
-                    MessageBox.Show($"{time}");
                 }
                 catch (FormatException)
                 {

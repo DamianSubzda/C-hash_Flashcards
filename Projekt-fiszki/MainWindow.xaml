@@ -55,8 +55,6 @@
                             <Image Source="brain.png" Height="46" Width="47" />
                         </StackPanel>
                     </Button>
-
-
                 </Grid>
             </TabItem>
             <TabItem Header="Test" FontSize="20" Height="50" Width="160">
@@ -91,7 +89,8 @@
 
                     <Button Name="endTest" Content="Zakończ" HorizontalAlignment="Left" Margin="625,270,0,0" VerticalAlignment="Top" Height="53" Width="104" Visibility="Hidden" Click="endTest_Click"/>
                     <Grid x:Name="Grid3" Visibility="Hidden">
-                        <Label x:Name="label6" FontSize="40" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="90" Margin="0,170,0,0" VerticalAlignment="Top" Width="596" />
+                        <Label Name="label15" FontSize="40" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="90" Margin="0,175,0,0" VerticalAlignment="Top" Width="596" />
+                        <Label x:Name="label6" FontSize="40" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="90" Margin="0,85,0,0" VerticalAlignment="Top" Width="596" />
                         <Button x:Name="newTest_button" Content="Rozpocznij nowy test" HorizontalAlignment="Center" Height="78" Margin="0,284,0,0" VerticalAlignment="Top" Width="445" Click="newTest_button_Click" />
                     </Grid>
                 </Grid>
@@ -118,7 +117,7 @@
                         <Label x:Name="label11" Content="s" HorizontalAlignment="Left" Margin="675,215,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.595,-0.299"/>
                     </Grid>
                     <Grid x:Name="Grid5" Visibility="Hidden" >
-                        <TextBlock Name="Counter" HorizontalAlignment="Left" Margin="593,73,0,0"  TextWrapping="Wrap" FontSize="50" VerticalAlignment="Top" Height="57" Width="180"/>
+                        <TextBlock Name="Counter" HorizontalAlignment="Left" Margin="615,60,0,0"  TextWrapping="Wrap" FontSize="50" VerticalAlignment="Top" Height="57" Width="180"/>
                         <Rectangle Name="rectangle1" HorizontalAlignment="Center" Height="160" Margin="0,90,0,0" Stroke="Black" VerticalAlignment="Top" Width="336"/>
                         <Border Name="border1" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" VerticalAlignment="Top" Width="384"/>
                         <TextBox x:Name="TextBox3" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Height="52" Margin="0,270,0,0" TextWrapping="Wrap" Background="Transparent" VerticalAlignment="Top" Width="384"/>
@@ -127,7 +126,7 @@
                         <Button Content="Następna" x:Name="next_w" HorizontalAlignment="Left" Height="36" Margin="619,310,0,0" VerticalAlignment="Top" Width="112" Click="Button_Click_Next_w"/>
                     </Grid>
                     <Grid x:Name="Grid6" Visibility="Hidden">
-                        <Label x:Name="label10" FontSize="40" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="90" Margin="0,170,0,0" VerticalAlignment="Top" Width="596" />
+                        <Label x:Name="label10" FontSize="40" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="90" Margin="0,80,0,0" VerticalAlignment="Top" Width="596" />
                         <Button x:Name="newRace_button" Content="Rozpocznij nowy wyscig" HorizontalAlignment="Center" Height="78" Margin="0,284,0,0" VerticalAlignment="Top" Width="445" Click="newRace_button_Click" />
                     </Grid>
                 </Grid>
